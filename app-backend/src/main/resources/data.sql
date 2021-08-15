@@ -36,3 +36,6 @@ insert into authors (author_id, first_name, last_name, date_of_birth, date_of_de
 
 insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'b20fbdcd-4bae-455e-a564-1400507ed8bc');
 insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'f2d4c1be-3ef6-4f4f-9fe8-e1b6df661502');
+
+insert into administrators(administrator_id, first_name, last_name, username, password) values ('e194ba33-c08c-4839-ae38-05b1904407d2', 'Djordjije', 'Kundacina', 'djordjije', '$2a$10$SGYrV025vt8LCppdh/VzVeZIXeFbDr5cBFyuMxCOD.I15p8CzbRie');
+insert into customers(customer_id, first_name, last_name, username, password, blocked, email, gender, phone_number, date_of_birth) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'Marko', 'Markovic', 'marko', '$2a$10$o1508kIPKW6yvEG.g/ezLeTe7Ah15ELRVTFAmExUiV15dMIrtSIsy', false, 'marko@gmail.com', 0, '++387-65-555-55-55', '1990-09-10');
