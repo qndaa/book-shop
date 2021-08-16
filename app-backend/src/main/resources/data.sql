@@ -39,3 +39,13 @@ insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0c
 
 insert into administrators(administrator_id, first_name, last_name, username, password) values ('e194ba33-c08c-4839-ae38-05b1904407d2', 'Djordjije', 'Kundacina', 'djordjije', '$2a$10$SGYrV025vt8LCppdh/VzVeZIXeFbDr5cBFyuMxCOD.I15p8CzbRie');
 insert into customers(customer_id, first_name, last_name, username, password, blocked, email, gender, phone_number, date_of_birth) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'Marko', 'Markovic', 'marko', '$2a$10$o1508kIPKW6yvEG.g/ezLeTe7Ah15ELRVTFAmExUiV15dMIrtSIsy', false, 'marko@gmail.com', 0, '++387-65-555-55-55', '1990-09-10');
+
+insert into cities(city_id, name, zip_code) values ('70daca69-1363-499b-92b6-60946457c9b2', 'Novi Sad', 21000);
+insert into cities(city_id, name, zip_code) values ('1481901e-183c-450e-9fd2-b1a9f9031cba', 'Beograd', 11000);
+insert into cities(city_id, name, zip_code) values ('d7c38da3-b4f7-4f1f-a4b3-e26f2c52a6cb', 'Subotica', 24000);
+
+insert into streets(street_id, name, city_id) values ('44b07716-3a80-43cb-9170-827185e94214', 'Bulevar despota Stefana', '70daca69-1363-499b-92b6-60946457c9b2');
+insert into streets(street_id, name, city_id) values ('1f7fad28-fde5-41ff-ab7f-308155617a1e', 'Bulevar oslobodjenja', '70daca69-1363-499b-92b6-60946457c9b2');
+insert into streets(street_id, name, city_id) values ('a9a1f6c2-6d16-466b-a804-98a24932cad3', 'Bulevar kralja Aleksandra', '1481901e-183c-450e-9fd2-b1a9f9031cba');
+
+insert into locations(location_id, street_id, number) values ('a4732d22-420c-42d3-bf50-0861897bf3dd', '1f7fad28-fde5-41ff-ab7f-308155617a1e', '4');
