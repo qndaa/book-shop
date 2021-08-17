@@ -1,7 +1,6 @@
 package com.shop.book.appbackend.controller;
 
 import com.shop.book.appbackend.model.Administrator;
-import com.shop.book.appbackend.model.Author;
 import com.shop.book.appbackend.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class AdministratorController {
         this.administratorService = administratorService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Administrator>> getAllAdministrators() {
         return new ResponseEntity<>(administratorService.getAllAdministrators(), HttpStatus.OK);
     }

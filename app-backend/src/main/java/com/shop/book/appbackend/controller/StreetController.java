@@ -1,8 +1,6 @@
 package com.shop.book.appbackend.controller;
 
-import com.shop.book.appbackend.model.Location;
 import com.shop.book.appbackend.model.Street;
-import com.shop.book.appbackend.service.LocationService;
 import com.shop.book.appbackend.service.StreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +23,7 @@ public class StreetController {
         this.streetService = streetService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Street>> getAllStreets() {
         return new ResponseEntity<>(streetService.getAllStreets(), HttpStatus.OK);
     }

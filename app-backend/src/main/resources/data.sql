@@ -14,10 +14,10 @@ insert into languages(language_id, name) values ('86a77937-5e64-4543-9222-c1eabf
 insert into languages(language_id, name) values ('14db1467-24b3-4ef5-9d19-77de725e7193', 'Spanski');
 
 
-insert into books(book_id, title, isbn, price, language_id) values ('2d3e1642-2714-48cb-8f1a-8b10abaf0651', 'Semper idem', '978-86-521-2315-5', 10.5, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a');
-insert into books(book_id, title, isbn, price, language_id) values ('5b7f6e56-d309-45ee-8db7-7c799c43f7ab', 'U poteri za svetlom', '978-86-521-4098-5', 15, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a');
-insert into books(book_id, title, isbn, price, language_id) values ('4b453706-6706-4959-ad76-2be916f7611b', 'Ordesa', '978-86-521-4092-3', 12, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a');
-insert into books(book_id, title, isbn, price, language_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'Komplet – Digitalna revolucija ', null, 22, 'd5b9ec3c-99e8-4d97-84d9-3a3ef0b18354');
+insert into books(book_id, title, isbn, price, language_id, quantity) values ('2d3e1642-2714-48cb-8f1a-8b10abaf0651', 'Semper idem', '978-86-521-2315-5', 10.5, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10);
+insert into books(book_id, title, isbn, price, language_id, quantity) values ('5b7f6e56-d309-45ee-8db7-7c799c43f7ab', 'U poteri za svetlom', '978-86-521-4098-5', 15, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10);
+insert into books(book_id, title, isbn, price, language_id, quantity) values ('4b453706-6706-4959-ad76-2be916f7611b', 'Ordesa', '978-86-521-4092-3', 12, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10);
+insert into books(book_id, title, isbn, price, language_id, quantity) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'Komplet – Digitalna revolucija ', null, 22, 'd5b9ec3c-99e8-4d97-84d9-3a3ef0b18354', 10);
 --insert into books(book_id, title, isbn, price) values ('049ee604-cf33-4f86-b4db-2ce038eced19', '', '', 30);
 --insert into books(book_id, title, isbn, price) values ('049ee604-cf33-4f86-b4db-2ce038eced19', '', '', 30);
 --insert into books(book_id, title, isbn, price) values ('049ee604-cf33-4f86-b4db-2ce038eced19', '', '', 30);
@@ -49,3 +49,15 @@ insert into streets(street_id, name, city_id) values ('1f7fad28-fde5-41ff-ab7f-3
 insert into streets(street_id, name, city_id) values ('a9a1f6c2-6d16-466b-a804-98a24932cad3', 'Bulevar kralja Aleksandra', '1481901e-183c-450e-9fd2-b1a9f9031cba');
 
 insert into locations(location_id, street_id, number) values ('a4732d22-420c-42d3-bf50-0861897bf3dd', '1f7fad28-fde5-41ff-ab7f-308155617a1e', '4');
+
+
+insert into marks(mark_id, book_id, customer_id, value) values ('eb000775-0f04-42bd-be12-d9f7a3799fb8', '2d3e1642-2714-48cb-8f1a-8b10abaf0651', '9592a9df-811b-44f2-8b26-47e8478eb256', 5);
+insert into marks(mark_id, book_id, customer_id, value) values ('ccedd8f3-be98-4aa9-adb3-dc3557e35187', '5b7f6e56-d309-45ee-8db7-7c799c43f7ab', '9592a9df-811b-44f2-8b26-47e8478eb256', 3);
+
+insert into comments(comment_id, book_id, customer_id, content) values ('90cc6ccc-b2ee-4b6b-955e-624733ff106a', '2d3e1642-2714-48cb-8f1a-8b10abaf0651', '9592a9df-811b-44f2-8b26-47e8478eb256', 'Top knjiga. Sve preporuke!');
+insert into comments(comment_id, book_id, customer_id, content) values ('7f5d2f07-1600-4b56-b2a7-8ba99dab50aa', '5b7f6e56-d309-45ee-8db7-7c799c43f7ab', '9592a9df-811b-44f2-8b26-47e8478eb256', 'Onako! Ima boljih prica...');
+
+insert into orders(order_id, location_id, customer_id, total_money) values ('a26c3312-c6f7-440b-a401-216bf1f24d04', 'a4732d22-420c-42d3-bf50-0861897bf3dd', '9592a9df-811b-44f2-8b26-47e8478eb256', 20);
+
+insert into order_lines(order_line_id, order_id, book_id, quantity) values ('ed4d675c-91da-431f-9dba-924397243a6c', 'a26c3312-c6f7-440b-a401-216bf1f24d04', '2d3e1642-2714-48cb-8f1a-8b10abaf0651', 2);
+insert into order_lines(order_line_id, order_id, book_id, quantity) values ('c2b503ac-65d1-490c-9209-5745fa0ea94e', 'a26c3312-c6f7-440b-a401-216bf1f24d04', '5b7f6e56-d309-45ee-8db7-7c799c43f7ab', 1);

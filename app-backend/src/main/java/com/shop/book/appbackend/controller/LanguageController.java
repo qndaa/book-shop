@@ -1,6 +1,5 @@
 package com.shop.book.appbackend.controller;
 
-import com.shop.book.appbackend.model.Category;
 import com.shop.book.appbackend.model.Language;
 import com.shop.book.appbackend.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class LanguageController {
         this.languageService = languageService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Language>> getAllCategories() {
         return new ResponseEntity<>(languageService.getAllLanguages(), HttpStatus.OK);
     }

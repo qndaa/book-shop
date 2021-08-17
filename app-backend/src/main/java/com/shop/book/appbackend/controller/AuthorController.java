@@ -1,7 +1,6 @@
 package com.shop.book.appbackend.controller;
 
 import com.shop.book.appbackend.model.Author;
-import com.shop.book.appbackend.model.Category;
 import com.shop.book.appbackend.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Author>> getAllCategories() {
         return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.OK);
     }

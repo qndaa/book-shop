@@ -23,7 +23,7 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Location>> getAllLocations() {
         return new ResponseEntity<>(locationService.getAllLocations(), HttpStatus.OK);
     }

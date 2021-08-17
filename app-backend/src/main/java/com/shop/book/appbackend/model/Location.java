@@ -1,6 +1,9 @@
 package com.shop.book.appbackend.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -37,5 +41,9 @@ public class Location {
     @JoinColumn(name = "street_id", nullable = false)
     private Street street;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "orderId")
+    @JsonIdentityReference(alwaysAsId = true)
+    @OneToMany(mappedBy = "location")
+    private Set<Order> orders;
 
 }

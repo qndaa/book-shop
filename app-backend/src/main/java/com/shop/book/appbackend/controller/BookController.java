@@ -24,7 +24,7 @@ public class BookController {
     }
 
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Book>> getAllBooks() {
         return new ResponseEntity<>(bookService.getAllBooks(), HttpStatus.OK);
     }

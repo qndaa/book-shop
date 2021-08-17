@@ -3,6 +3,7 @@ package com.shop.book.appbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,9 +35,11 @@ public class Book {
     @Column(name = "isbn", unique = true)
     private String isbn;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     @Column(name = "price", nullable = false)
     private double price;
-
 
     @ManyToMany
     @JoinTable(
@@ -61,5 +64,20 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
+
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
+    @JsonIdentityReference(alwaysAsId = true)
+    @OneToMany(mappedBy = "book")
+    private Set<Comment> comments;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "markId")
+    @JsonIdentityReference(alwaysAsId = true)
+    @OneToMany(mappedBy = "book")
+    private Set<Mark> marks;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "book")
+    private Set<OrderLine> orderLines;
 
 }

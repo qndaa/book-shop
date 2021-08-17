@@ -1,8 +1,7 @@
 package com.shop.book.appbackend.controller;
 
-
-import com.shop.book.appbackend.model.Category;
-import com.shop.book.appbackend.service.CategoryService;
+import com.shop.book.appbackend.model.Comment;
+import com.shop.book.appbackend.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,21 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/category", produces = MediaType.APPLICATION_JSON_VALUE)
-public class CategoryController {
+@RequestMapping(value = "/api/comment", produces = MediaType.APPLICATION_JSON_VALUE)
+public class CommentController {
 
-    private final CategoryService categoryService;
+    private final CommentService commentService;
 
     @Autowired
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
     }
-
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Category>> getAllCategories() {
-        return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
+    public ResponseEntity<List<Comment>> getAllComments() {
+        return new ResponseEntity<>(commentService.getAllComments(), HttpStatus.OK);
     }
-
-
 }

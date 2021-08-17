@@ -1,9 +1,7 @@
 package com.shop.book.appbackend.controller;
 
 import com.shop.book.appbackend.model.City;
-import com.shop.book.appbackend.model.Location;
 import com.shop.book.appbackend.service.CityService;
-import com.shop.book.appbackend.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +23,7 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @RequestMapping(name = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<City>> getAllCities() {
         return new ResponseEntity<>(cityService.getAllCities(), HttpStatus.OK);
     }
