@@ -12,11 +12,11 @@ const Sidebar = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        api.get('/category')
-            .then(response => {
-                console.log(response.data);
-                setCategories(response.data);
-            });
+        // api.get('/category')
+        //     .then(response => {
+        //         console.log(response.data);
+        //         setCategories(response.data);
+        //     });
 
     }, [])
 

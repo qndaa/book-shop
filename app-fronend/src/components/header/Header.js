@@ -1,4 +1,5 @@
 import SearchForm from "./SearchForm";
+import {Link} from "react-router-dom";
 
 
 const Header = () => {
@@ -7,6 +8,9 @@ const Header = () => {
         <nav className={`navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow`}>
 
             <SearchForm />
+
+            <Link to={`/registration`}>Registration</Link>
+            <Link to={`/login`}>Login</Link>
 
             <ul className="navbar-nav ml-auto">
 
