@@ -1,10 +1,10 @@
-import Sidebar from "./sidebar/Sidebar";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 
+import 'react-toastify/dist/ReactToastify.css';
 import "../css/index.css";
 
+import Sidebar from "./sidebar/Sidebar";
 import HomePage from "./home/HomePage";
 import RegistrationPage from "./registration/RegistrationPage";
 import ErrorPage from "./ErrorPage";
@@ -13,10 +13,11 @@ import BookPage from "./BookPage";
 import LoginPage from "./login/LoginPage";
 
 
+
 const App = () => {
     return (
         <div>
-            <BrowserRouter>
+            <Router>
                 <div id={`wrapper`}>
                     <Sidebar/>
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -45,7 +46,7 @@ const App = () => {
                 </div>
 
 
-            </BrowserRouter>
+            </Router>
 
 
         </div>

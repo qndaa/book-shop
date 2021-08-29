@@ -1,2 +1,5 @@
-package com.shop.book.appbackend.model.enums;public class TypeOfUser {
+package com.shop.book.appbackend.model.enums;
+
+public enum TypeOfUser {
+    ADMINISTRATOR, CUSTOMER
 }

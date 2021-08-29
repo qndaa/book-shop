@@ -21,13 +21,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "customers")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Customer extends User {
-
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "customer_id", nullable = false, unique = true)
-    private UUID customerId;
 
     @Column(name = "blocked", nullable = false)
     private boolean blocked;
@@ -38,7 +33,7 @@ public class Customer extends User {
     @Column(name = "gender")
     private Gender gender;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "date_of_birth")

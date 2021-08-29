@@ -1,26 +1,23 @@
 import {useForm} from "react-hook-form";
 import api from "../../apis/api";
 import { toast } from "react-toastify";
+import {useHistory} from "react-router-dom";
 
 
 const RegistrationForm = () => {
 
-    const {register, handleSubmit, formState: {errors}, getValues} = useForm();
+    const {register, handleSubmit, formState: {errors}, getValues, reset} = useForm();
+    const history = useHistory();
 
     const submit = (data) => {
-        console.log(data);
-        console.log(errors);
         api.post('/customer', data).then((response) => {
-            console.log(response);
-            switch (response.status) {
-                case 201:
-                    toast('Registration success!');
-                default:
-                    toast('Error!');
+            if (response.status) {
+                toast('Registration success!');
+                history.push('/login');
             }
-        }).catch((errors) => {
-            toast('Error!');
-        })
+        }).catch(err => {
+            toast(err.response.data.message);
+        });
     }
 
     return (
@@ -41,12 +38,22 @@ const RegistrationForm = () => {
                     { errors.lastName && <div className="invalid-feedback ml-3">{errors.lastName.message}</div> }
                 </div>
             </div>
-            <div className="form-group">
-                <input type="email" className={`form-control form-control-user ${errors.email ? 'is-invalid': ''}`}
-                       id="email"
-                       placeholder="Email Address"
-                       {...register('email', {required: 'Email is required!'})}/>
-                { errors.email && <div className="invalid-feedback ml-3">{errors.email.message}</div> }
+            <div className="form-group row">
+                <div className="col-sm-6 mb-3 mb-sm-0">
+                    <input type="email" className={`form-control form-control-user ${errors.email ? 'is-invalid': ''}`}
+                           id="email"
+                           placeholder="Email Address"
+                           {...register('email', {required: 'Email is required!'})}/>
+                    { errors.email && <div className="invalid-feedback ml-3">{errors.email.message}</div> }
+                </div>
+                <div className="col-sm-6">
+                    <input type="username" className={`form-control form-control-user ${errors.username ? 'is-invalid': ''}`}
+                           id="username"
+                           placeholder="Username"
+                           {...register('username', {required: 'Username is required!'})}/>
+                    { errors.username && <div className="invalid-feedback ml-3">{errors.username.message}</div> }
+
+                </div>
             </div>
             <div className="form-group row">
                 <div className="col-sm-6 mb-3 mb-sm-0">
@@ -76,11 +83,7 @@ const RegistrationForm = () => {
             </button>
             <hr/>
         </form>
-
-
     );
-
-
 }
 
 export default RegistrationForm;

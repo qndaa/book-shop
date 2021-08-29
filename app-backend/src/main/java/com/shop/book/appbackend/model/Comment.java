@@ -32,7 +32,7 @@ public class Comment {
     private Book book;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private Customer customer;
 
 }

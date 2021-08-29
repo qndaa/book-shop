@@ -1,10 +1,6 @@
 package com.shop.book.appbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,8 +10,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -39,7 +34,7 @@ public class Order {
     private Location location;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private Customer customer;
 
 }
