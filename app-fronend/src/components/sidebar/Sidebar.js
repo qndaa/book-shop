@@ -11,18 +11,16 @@ const Sidebar = () => {
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        // api.get('/category')
-        //     .then(response => {
-        //         console.log(response.data);
-        //         setCategories(response.data);
-        //     });
+    useEffect( () => {
+         api.get('/category')
+            .then(response => {
+                setCategories(response.data);
+            });
 
     }, [])
 
     const renderCategoryLinks = () => {
         return categories.map((item, index) => {
-            console.log(item.categoryId);
             return (<CategoryLink key={index} to={item.categoryId} name={item.name} num={item.books.length} />);
         })
     }
