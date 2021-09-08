@@ -1,3 +1,4 @@
+import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 
@@ -40,18 +41,10 @@ const App = () => {
                             <ToastContainer position="bottom-right"
                                             autoClose={5000}/>
                         </div>
-
                     </div>
-
                 </div>
-
-
             </Router>
-
-
         </div>
-
-
     );
 };
 

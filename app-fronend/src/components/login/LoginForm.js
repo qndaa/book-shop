@@ -1,32 +1,26 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import api from "../../apis/api";
-import {useHistory} from "react-router-dom";
+import api, { setToken, getHeader } from "../../apis/api";
+import { useHistory } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {login} from "../../actions";
 
 
 const LoginForm = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const history = useHistory();
+    const dispatch = useDispatch()
 
     const submit = (data) => {
-        console.log(data);
-        const params = new URLSearchParams()
-        params.append("username", data.username);
-        params.append("password", data.password)
 
-        api.post('/login', params, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-        }).then((response) => {
-            console.log(response);
-            localStorage.setItem('access_token', response.data.access_token);
-            localStorage.setItem('refresh_token', response.data.refresh_token);
-            history.push('/');
+        dispatch(login(data.username, data.password))
+            .then(response => {
+                console.log(response);
+                history.push('/home');
+            }).catch(err => {
+                console.log(err.response);
+            })
 
-        }).catch(err => {
-            console.log(err.response);
-        })
     }
 
     return (

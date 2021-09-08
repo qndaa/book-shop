@@ -1,12 +1,13 @@
-import {useForm} from "react-hook-form";
+import React from "react";
+import { useForm } from "react-hook-form";
 import api from "../../apis/api";
 import { toast } from "react-toastify";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const RegistrationForm = () => {
 
-    const {register, handleSubmit, formState: {errors}, getValues, reset} = useForm();
+    const {register, handleSubmit, formState: {errors}, getValues} = useForm();
     const history = useHistory();
 
     const submit = (data) => {
