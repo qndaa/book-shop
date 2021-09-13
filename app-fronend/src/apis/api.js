@@ -1,7 +1,7 @@
 import axios from "axios";
 import decode from "jwt-decode";
 
-const URL = 'http://localhost:8080/api';
+export const URL_BACKEND = 'http://localhost:8080/api';
 
 export function getHeader() {
     const headers = {
@@ -48,6 +48,6 @@ export function getProfile() {
 }
 
 export default axios.create({
-    baseURL: URL,
+    baseURL: URL_BACKEND,
 });
 

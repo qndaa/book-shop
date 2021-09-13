@@ -4,7 +4,6 @@ import api from "../../apis/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
-
 const RegistrationForm = () => {
 
     const {register, handleSubmit, formState: {errors}, getValues} = useForm();

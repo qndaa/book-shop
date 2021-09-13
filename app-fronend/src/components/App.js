@@ -12,6 +12,7 @@ import ErrorPage from "./ErrorPage";
 import Header from "./header/Header";
 import BookPage from "./BookPage";
 import LoginPage from "./login/LoginPage";
+import Profile from "./profile/Profile";
 
 
 
@@ -30,6 +31,7 @@ const App = () => {
                                 <Route path={`/login`} exact component={LoginPage}/>
                                 <Route path={'/registration'} exact component={RegistrationPage}/>
                                 <Route path={`/book/:category`} exact component={BookPage}/>
+                                <Route path={`/profile`} exact component={Profile} />
                                 <Route path={`/forbidden`} exact>
                                     <ErrorPage code={403} title={`Forbidden Page`}/>
                                 </Route>

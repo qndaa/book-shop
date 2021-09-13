@@ -5,6 +5,7 @@ import api from "../../apis/api";
 import Logo from "./Logo";
 import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {faBook} from "@fortawesome/free-solid-svg-icons";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
 import SidebarLink from "./SidebarLink";
 import CategoryLink from "./CategoryLink";
 
@@ -29,10 +30,11 @@ const Sidebar = () => {
 
     return (
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <Logo/>
             <hr className="sidebar-divider my-0"/>
             <SidebarLink icon={faHome} title={`Home page`} to={`/home`}/>
+            <hr className="sidebar-divider my-0"/>
+            <SidebarLink icon={faUser} title={`Authors`} to={`/authors`}/>
             <hr className="sidebar-divider my-0"/>
             <SidebarLink icon={faBook} title={`Categories`} to={`/categories`}/>
 

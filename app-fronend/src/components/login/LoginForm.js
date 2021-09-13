@@ -1,9 +1,10 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import api, { setToken, getHeader } from "../../apis/api";
+import api, {setToken, getHeader, getProfile} from "../../apis/api";
 import { useHistory } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {login} from "../../actions";
+import {fetchLoggedUser, login} from "../../actions";
+import {toast} from "react-toastify";
 
 
 const LoginForm = () => {
@@ -14,12 +15,14 @@ const LoginForm = () => {
     const submit = (data) => {
 
         dispatch(login(data.username, data.password))
-            .then(response => {
-                console.log(response);
+            .then(() => {
                 history.push('/home');
+                toast.success("Success login!")
+
+
             }).catch(err => {
-                console.log(err.response);
-            })
+                toast.error('Invalid username or password!');
+            });
 
     }
 

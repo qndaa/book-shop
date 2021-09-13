@@ -32,11 +32,17 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "date_of_birth", nullable = false)
-    private Date dateOfBirth;
+    @Column(name = "biography")
+    private String biography;
+
+    @Column(name = "date_of_birth")
+    private String dateOfBirth;
 
     @Column(name = "date_of_death")
-    private Date dateOfDeath;
+    private String dateOfDeath;
+
+    @Column(name = "image")
+    private String image;
     
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;

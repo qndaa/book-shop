@@ -24,7 +24,7 @@ public class AuthorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Author>> getAllCategories() {
+    public ResponseEntity<List<Author>> getAllAuthors() {
         return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.OK);
     }
 

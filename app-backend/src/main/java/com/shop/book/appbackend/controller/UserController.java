@@ -10,16 +10,14 @@ import com.shop.book.appbackend.model.User;
 import com.shop.book.appbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +35,11 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 public class UserController {
     private final UserService userService;
 
-
+    @GetMapping("/user/{username}")
+    public ResponseEntity<User> getUserById(@PathVariable String username) {
+        User user = userService.getUser(username);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {

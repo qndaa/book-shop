@@ -41,6 +41,9 @@ public class Book {
     @Column(name = "price", nullable = false)
     private double price;
 
+    @Column(name = "image", unique = true)
+    private String image;
+
     @ManyToMany
     @JoinTable(
             name = "books_categories",
