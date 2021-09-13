@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,6 +30,6 @@ public class Category {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "bookId")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 }

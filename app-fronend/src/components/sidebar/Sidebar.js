@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import api from "../../apis/api";
+import api, {isAdmin, loggedIn} from "../../apis/api";
 
 import Logo from "./Logo";
 import {faHome} from "@fortawesome/free-solid-svg-icons";
@@ -8,23 +8,38 @@ import {faBook} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import SidebarLink from "./SidebarLink";
 import CategoryLink from "./CategoryLink";
+import CategoryForm from "./CategoryForm";
+import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {fetchAllBooks, fetchCategories, logout} from "../../actions";
+import Book from "../util/Book";
 
 const Sidebar = () => {
 
-    const [categories, setCategories] = useState([]);
+    const categories = useSelector(state => state.categories);
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
-    useEffect( () => {
-         api.get('/category')
-            .then(response => {
-                setCategories(response.data);
-            });
+    if(!loggedIn()) {
+        dispatch(logout());
+    }
 
-    }, [])
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, []);
 
     const renderCategoryLinks = () => {
-        return categories.map((item, index) => {
-            return (<CategoryLink key={index} to={item.categoryId} name={item.name} num={item.books.length} />);
-        })
+        return Object.values(categories).map(item => {
+            return (<CategoryLink key={item.categoryId} to={item.categoryId} name={item.name} num={item.books.length} />);
+        });
+
+    }
+
+    const renderForm = () => {
+        if(isLoggedIn && isAdmin()){
+            return <CategoryForm />
+        }
+        return (<div/>)
     }
 
 
@@ -39,6 +54,8 @@ const Sidebar = () => {
             <SidebarLink icon={faBook} title={`Categories`} to={`/categories`}/>
 
             {renderCategoryLinks()}
+
+            {renderForm()}
         </ul>
     );
 

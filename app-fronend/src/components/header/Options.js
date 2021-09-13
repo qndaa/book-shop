@@ -9,10 +9,13 @@ const Options = () => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const dispatch = useDispatch();
 
-    if(isLoggedIn && loggedIn()) {
+    if(!loggedIn()) {
+        dispatch(logout());
+    }
+
+    if(isLoggedIn) {
         return (<ProfileOptions />)
     } else {
-        dispatch(logout());
         return (<LogRegOptions />)
     }
 }

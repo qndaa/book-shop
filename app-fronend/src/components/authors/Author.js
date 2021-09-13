@@ -1,7 +1,4 @@
-
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faUser} from "@fortawesome/free-solid-svg-icons";
 import {URL_BACKEND} from "../../apis/api";
 import {Link} from "react-router-dom";
 
@@ -14,7 +11,7 @@ const Author = (props) => {
         if (fileName !== null) {
             resource = URL_BACKEND + '/file/' + fileName;
         }
-        return (<img className="img-fluid " src={resource} style={{ height : 260, width : 200}} />);
+        return (<img className="img-fluid " src={resource} style={{ height : 260, width : 200}}  alt={`Author!`}/>);
     }
 
     const renderDate = (yearOfBirth, yearOfDeath) => {

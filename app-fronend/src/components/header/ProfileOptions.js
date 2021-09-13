@@ -7,7 +7,7 @@ import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {toast} from "react-toastify";
-import {getProfile, loggedIn} from "../../apis/api";
+import {getProfile, loggedIn, URL_BACKEND} from "../../apis/api";
 
 const ProfileOptions = () => {
 
@@ -24,6 +24,21 @@ const ProfileOptions = () => {
         }
     }, []);
 
+    const renderImage = (fileName) => {
+
+
+        let resource = URL_BACKEND + '/file/default-profile.png';
+        if (fileName !== null) {
+            resource = URL_BACKEND + '/file/' + fileName;
+        }
+
+        return(
+            <img className="img-profile rounded-circle"
+                 src={resource}/>
+        );
+
+
+    }
 
     const handledLogout = () => {
         dispatch(logout());
@@ -75,8 +90,7 @@ const ProfileOptions = () => {
                 <div className="nav-link dropdown-toggle"  onClick={handledDropdownUser} id="userDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">{profile !== null ? profile.firstName + ' ' + profile.lastName : ''}</span>
-                    <img className="img-profile rounded-circle"
-                         src="../../../public/undraw_profile.svg"/>
+                    {profile != null ? renderImage(profile.image): ''}
                 </div>
                 <div className={`dropdown-menu dropdown-menu-right shadow animated--grow-in ${showDropdownUser ? 'show' : ''}`}
                      aria-labelledby="userDropdown">

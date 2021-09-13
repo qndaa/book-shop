@@ -1,7 +1,6 @@
 import decode from 'jwt-decode';
 
 
-
 export default class AuthService {
     // Initializing important variables
     constructor(domain) {

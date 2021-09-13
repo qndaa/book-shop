@@ -42,6 +42,9 @@ public class User {
     @Column(name = "type_of_user", nullable = false)
     private TypeOfUser typeOfUser;
 
+    @Column(name = "image")
+    private String image;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",

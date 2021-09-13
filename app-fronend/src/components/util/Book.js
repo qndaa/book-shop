@@ -6,14 +6,12 @@ import {Link} from "react-router-dom";
 
 const Book = (props) => {
 
-    console.log(props);
-
     const renderImage = (fileName) => {
         if (fileName !== null) {
             const resource = URL_BACKEND + '/file/' + fileName;
-            return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200" />);
+            return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200"  alt={`Book!`}/>);
         } else {
-            return (<div></div>)
+            return (<div/>)
         }
     }
 
@@ -25,18 +23,12 @@ const Book = (props) => {
                             <div className="col mr-2">
                                 <div style={{ height: 300}}>
                                     {renderImage(props.book.image)}
-
-
                                 </div>
-
-
                                 <div style={{height: 50}} className="d-flex justify-content-center text-xl font-weight-bold text-primary text-uppercase mb-1">
                                     {props.book.title}
                                 </div>
                                 <div className="h5 mb-0 font-weight-bold text-gray-800 d-flex justify-content-center">
                                     {props.book.price}&euro;
-
-
                                 </div>
 
                                 <a href="#" className="btn btn-success  d-flex justify-content-center mt-3">

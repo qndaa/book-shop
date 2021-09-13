@@ -3,3 +3,5 @@ export const LOGOUT = 'LOGOUT';
 export const FETCH_ALL_BOOKS = 'FETCH_ALL_BOOKS';
 export const FETCH_LOGGED_USER = 'FETCH_LOGGED_USER';
 export const FETCH_AUTHORS = 'FETCH_AUTHORS';
+export const FETCH_CATEGORY = 'FETCH_CATEGORY';
+export const CREATE_CATEGORY = 'CREATE_CATEGORY';

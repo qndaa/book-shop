@@ -51,3 +51,11 @@ export default axios.create({
     baseURL: URL_BACKEND,
 });
 
+export function isAdmin() {
+    if(loggedIn()) {
+        const profile = getProfile();
+        return profile.roles.includes('ROLE_ADMINISTRATOR');
+    }
+    return false;
+
+}

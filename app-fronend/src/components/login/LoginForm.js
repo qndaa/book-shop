@@ -1,9 +1,8 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import api, {setToken, getHeader, getProfile} from "../../apis/api";
 import { useHistory } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {fetchLoggedUser, login} from "../../actions";
+import { login} from "../../actions";
 import {toast} from "react-toastify";
 
 
@@ -16,7 +15,7 @@ const LoginForm = () => {
 
         dispatch(login(data.username, data.password))
             .then(() => {
-                history.push('/books');
+                history.push('/home');
                 toast.success("Success login!")
 
 
