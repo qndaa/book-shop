@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllBooks} from "../../actions";
 import Book from "../util/Book";
 
-const HomePage = () => {
+const BooksPage = () => {
     const dispatch = useDispatch();
     const books = useSelector(state => state.books);
 
@@ -31,4 +31,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage;
+export default BooksPage;

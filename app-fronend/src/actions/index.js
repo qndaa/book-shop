@@ -1,4 +1,4 @@
-import {FETCH_ALL_BOOKS, FETCH_LOGGED_USER, LOGIN, LOGOUT} from "./types";
+import {FETCH_ALL_BOOKS, FETCH_AUTHORS, FETCH_LOGGED_USER, LOGIN, LOGOUT} from "./types";
 import api, {getHeader} from "../apis/api";
 
 
@@ -43,6 +43,25 @@ export const fetchAllBooks = () => async (dispatch) => {
         return Promise.reject(e);
     }
 }
+
+
+export const fetchAllAuthors = () => async (dispatch) => {
+    try {
+
+        const res = await api.get('/author', {headers: getHeader()});
+        dispatch({
+            type: FETCH_AUTHORS,
+            payload: res.data
+        });
+
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+
+
 
 
 export const fetchLoggedUser = (username) => async (dispatch) => {

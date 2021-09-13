@@ -6,13 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import "../css/index.css";
 
 import Sidebar from "./sidebar/Sidebar";
-import HomePage from "./home/HomePage";
+import BooksPage from "./books/BooksPage";
 import RegistrationPage from "./registration/RegistrationPage";
 import ErrorPage from "./ErrorPage";
 import Header from "./header/Header";
-import BookPage from "./BookPage";
 import LoginPage from "./login/LoginPage";
 import Profile from "./profile/Profile";
+import AuthorsPage from "./authors/AuthorsPage";
+import SingleAuthorPage from "./authors/SingleAuthorPage";
+import SingleBookPage from "./books/SingleBookPage";
 
 
 
@@ -26,12 +28,15 @@ const App = () => {
                         <div id="content">
                             <Header/>
                             <Switch>
-                                <Route path={`/`} exact component={HomePage}/>
-                                <Route path={`/home`} exact component={HomePage}/>
+                                <Route path={`/`} exact component={BooksPage}/>
+                                <Route path={`/home`} exact component={BooksPage}/>
                                 <Route path={`/login`} exact component={LoginPage}/>
                                 <Route path={'/registration'} exact component={RegistrationPage}/>
-                                <Route path={`/book/:category`} exact component={BookPage}/>
+
+                                <Route path={`/books/:id`} exact component={SingleBookPage} />
                                 <Route path={`/profile`} exact component={Profile} />
+                                <Route path={`/authors`} exact component={AuthorsPage} />
+                                <Route path={`/authors/:id`} exact component={SingleAuthorPage} />
                                 <Route path={`/forbidden`} exact>
                                     <ErrorPage code={403} title={`Forbidden Page`}/>
                                 </Route>

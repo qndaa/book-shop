@@ -1,6 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {URL_BACKEND} from "../../apis/api";
 import {Link} from "react-router-dom";
 
@@ -28,7 +28,7 @@ const Book = (props) => {
 
 
                                 </div>
-                                
+
 
                                 <div style={{height: 50}} className="d-flex justify-content-center text-xl font-weight-bold text-primary text-uppercase mb-1">
                                     {props.book.title}
@@ -46,7 +46,7 @@ const Book = (props) => {
                                     <span className="text">Add</span>
                                 </a>
 
-                                <Link to={`/book/${props.book.bookId}`} className="btn btn-primary  d-flex justify-content-center mt-3">
+                                <Link to={`/books/${props.book.bookId}`} className="btn btn-primary  d-flex justify-content-center mt-3">
                                     <span className="text">See more</span>
                                 </Link>
 

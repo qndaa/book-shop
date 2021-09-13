@@ -66,19 +66,19 @@ insert into books_categories (book_id, category_id) values  ('1c7dce3b-f00b-4d8d
 
 
 
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography) values (
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography) values (
                                                                                                         '114aa1cc-fbdd-476b-9667-c0c5553cbf0f',
                                                                                                         'Marko',
                                                                                                         'Vidojković',
-                                                                                                        '1975-10-11',
+                                                                                                        1975,
                                                                                                         null,
                                                                                                         null);
 
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography, image) values ('b20fbdcd-4bae-455e-a564-1400507ed8bc', 'Kristof', 'Keze', '1964-01-01', null, null, null);
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography, image) values ('f2d4c1be-3ef6-4f4f-9fe8-e1b6df661502', 'Džejmi', 'Bartlet', '1971-10-13', null, null, null);
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography, image) values ('cd80f545-f964-4d62-a335-72d77b0f5061', 'Misel', 'Marli', null, null, null, null);
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography, image) values ('c81227de-be7e-4232-8bfe-3d784f53c98b', 'Momo', 'Kapor', '1937', '2010', null, 'b4cfdc71-ad43-4e36-9107-f22ce01148a9.jpg');
-insert into authors (author_id, first_name, last_name, date_of_birth, date_of_death, biography, image) values ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'Bler', 'Holden', null, null, null, null);
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('b20fbdcd-4bae-455e-a564-1400507ed8bc', 'Kristof', 'Keze', 1964, null, null, '8caf056f-3276-4c41-9209-8448ceeb64a7.jpg');
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('f2d4c1be-3ef6-4f4f-9fe8-e1b6df661502', 'Džejmi', 'Bartlet', 1971, null, null, null);
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('cd80f545-f964-4d62-a335-72d77b0f5061', 'Misel', 'Marli', null, null, null, '2cd5da7f-6074-43f8-9212-ded77ed03a77.jpg');
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('c81227de-be7e-4232-8bfe-3d784f53c98b', 'Momo', 'Kapor', 1937, 2010, null, 'b4cfdc71-ad43-4e36-9107-f22ce01148a9.jpg');
+insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'Bler', 'Holden', null, null, null, null);
 --insert into author (author_id, first_name, last_name, date_of_birth, date_of_death) values ('a227f976-fdd0-4d10-a26e-cfbc0319aea9', '', '', '', '');
 
 insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'b20fbdcd-4bae-455e-a564-1400507ed8bc');

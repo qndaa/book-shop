@@ -16,7 +16,7 @@ const LoginForm = () => {
 
         dispatch(login(data.username, data.password))
             .then(() => {
-                history.push('/home');
+                history.push('/books');
                 toast.success("Success login!")
 
 

@@ -35,11 +35,11 @@ public class Author {
     @Column(name = "biography")
     private String biography;
 
-    @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    @Column(name = "year_of_birth")
+    private Integer yearOfBirth;
 
-    @Column(name = "date_of_death")
-    private String dateOfDeath;
+    @Column(name = "year_of_death")
+    private Integer yearOfDeath;
 
     @Column(name = "image")
     private String image;
