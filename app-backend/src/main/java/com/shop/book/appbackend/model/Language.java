@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,6 +30,6 @@ public class Language {
 
     @OneToMany(mappedBy = "language", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 }

@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "biography")
+    @Column(name = "biography", length = 2000)
     private String biography;
 
     @Column(name = "year_of_birth")
@@ -45,7 +46,7 @@ public class Author {
     private String image;
     
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 
 }

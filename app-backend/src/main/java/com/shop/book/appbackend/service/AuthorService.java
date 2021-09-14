@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface AuthorService {
     List<Author> getAllAuthors();
+
+    Author create(Author author);
 }

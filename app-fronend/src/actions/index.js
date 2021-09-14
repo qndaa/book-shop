@@ -1,13 +1,13 @@
 import {
     CHANGE_PROFILE_PASSWORD,
-    CHANGE_PROFILE_PHOTO,
-    CREATE_CATEGORY,
+    CHANGE_PROFILE_PHOTO, CREATE_AUTHOR,
+    CREATE_CATEGORY, CREATE_LANGUAGE,
     FETCH_ALL_BOOKS,
     FETCH_AUTHORS,
-    FETCH_CATEGORY,
+    FETCH_CATEGORY, FETCH_LANGUAGE,
     FETCH_LOGGED_USER,
     LOGIN,
-    LOGOUT, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER
+    LOGOUT, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER, UPDATE_LANGUAGE
 } from "./types";
 import api, {getHeader} from "../apis/api";
 
@@ -56,6 +56,19 @@ export const fetchCategories = () => async (dispatch) => {
         const res = await api.get('/category', {headers: getHeader()});
         dispatch({
             type: FETCH_CATEGORY,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const fetchLanguage = () => async (dispatch) => {
+    try {
+        const res = await api.get('/language', {headers: getHeader()});
+        dispatch({
+            type: FETCH_LANGUAGE,
             payload: res.data
         });
         return Promise.resolve(res.data);
@@ -157,3 +170,44 @@ export const updateCustomer = data => async (dispatch) => {
     }
 }
 
+
+export const createAuthor = data => async (dispatch) => {
+    try {
+        const res = await api.post('/author', data,{headers: getHeader()});
+        dispatch({
+            type: CREATE_AUTHOR,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+
+export const updateLanguage = data => async (dispatch) => {
+    try {
+        const res = await api.post('/language/update', data,{headers: getHeader()});
+        dispatch({
+            type: UPDATE_LANGUAGE,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+
+export const createLanguage = data => async (dispatch) => {
+    try {
+        const res = await api.post('/language', data,{headers: getHeader()});
+        dispatch({
+            type: CREATE_LANGUAGE,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}

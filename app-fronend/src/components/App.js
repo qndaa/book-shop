@@ -15,6 +15,7 @@ import Profile from "./profile/Profile";
 import AuthorsPage from "./authors/AuthorsPage";
 import SingleAuthorPage from "./authors/SingleAuthorPage";
 import SingleBookPage from "./books/SingleBookPage";
+import PanelPage from "./panel/PanelPage";
 
 
 
@@ -36,6 +37,7 @@ const App = () => {
                                 <Route path={`/books/:id`} exact component={SingleBookPage} />
                                 <Route path={`/profile`} exact component={Profile} />
                                 <Route path={`/authors`} exact component={AuthorsPage} />
+                                <Route path={`/panel`} exact component={PanelPage} />
                                 <Route path={`/authors/:id`} exact component={SingleAuthorPage} />
                                 <Route path={`/forbidden`} exact>
                                     <ErrorPage code={403} title={`Forbidden Page`}/>

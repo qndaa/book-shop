@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {faBook} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
 import SidebarLink from "./SidebarLink";
 import CategoryLink from "./CategoryLink";
 import CategoryForm from "./CategoryForm";
@@ -39,7 +40,19 @@ const Sidebar = () => {
         if(isLoggedIn && isAdmin()){
             return <CategoryForm />
         }
-        return (<div/>)
+        return null;
+    }
+
+    const renderPanel = () => {
+        if(isLoggedIn && isAdmin()){
+            return (
+                <React.Fragment>
+                    <hr className="sidebar-divider my-0"/>
+                    <SidebarLink icon={faTachometerAlt} title={`Panel`} to={`/panel`}/>
+                </React.Fragment>
+            );
+        }
+        return null
     }
 
 
@@ -48,6 +61,7 @@ const Sidebar = () => {
             <Logo/>
             <hr className="sidebar-divider my-0"/>
             <SidebarLink icon={faHome} title={`Home page`} to={`/home`}/>
+            {renderPanel()}
             <hr className="sidebar-divider my-0"/>
             <SidebarLink icon={faUser} title={`Authors`} to={`/authors`}/>
             <hr className="sidebar-divider my-0"/>

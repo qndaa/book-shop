@@ -104,12 +104,6 @@ const UpdateProfileDataForm = (props) => {
 
                                 </div>
 
-
-
-
-
-
-
                             </div>
                         </div>
 

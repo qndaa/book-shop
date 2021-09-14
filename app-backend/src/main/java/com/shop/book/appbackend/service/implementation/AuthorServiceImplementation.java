@@ -22,4 +22,9 @@ public class AuthorServiceImplementation implements AuthorService {
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
+
+    @Override
+    public Author create(Author author) {
+        return authorRepository.save(author);
+    }
 }
