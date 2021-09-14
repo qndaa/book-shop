@@ -1,7 +1,10 @@
 package com.shop.book.appbackend.controller;
 
+import com.shop.book.appbackend.dto.UpdateAdministratorDTO;
+import com.shop.book.appbackend.dto.UpdateCustomerDTO;
 import com.shop.book.appbackend.exceptions.UniqueEmailException;
 import com.shop.book.appbackend.exceptions.UniqueUsernameException;
+import com.shop.book.appbackend.model.Administrator;
 import com.shop.book.appbackend.model.Customer;
 import com.shop.book.appbackend.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -39,6 +41,17 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(customerService.saveCustomer(customer), HttpStatus.CREATED);
         } catch (UniqueEmailException | UniqueUsernameException e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
+    @RequestMapping(method = RequestMethod.POST, value = "/update")
+    public ResponseEntity<?> updateCustomer(@RequestBody UpdateCustomerDTO dto) {
+        try {
+            Customer user = customerService.updateCustomer(dto);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }
     }

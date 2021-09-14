@@ -4,8 +4,6 @@ import {Link} from "react-router-dom";
 
 const Author = (props) => {
 
-    console.log(props);
-
     const renderImage = (fileName) => {
         let resource = URL_BACKEND + '/file/default-author.png';
         if (fileName !== null) {

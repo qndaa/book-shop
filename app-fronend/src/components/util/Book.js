@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {URL_BACKEND} from "../../apis/api";
+import api, {isCustomer, URL_BACKEND} from "../../apis/api";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const Book = (props) => {
+
+    const dispatch = useDispatch();
 
     const renderImage = (fileName) => {
         if (fileName !== null) {
@@ -12,6 +15,22 @@ const Book = (props) => {
             return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200"  alt={`Book!`}/>);
         } else {
             return (<div/>)
+        }
+
+
+
+    }
+
+    const renderAddButton = () => {
+        if(isCustomer()) {
+            return(
+                <button className="btn btn-success  d-flex justify-content-center mt-3 w-100">
+                                        <span className="icon mr-3">
+                                            <FontAwesomeIcon icon={faPlus} />
+                                        </span>
+                    <span className="text">Add</span>
+                </button>
+            );
         }
     }
 
@@ -31,12 +50,7 @@ const Book = (props) => {
                                     {props.book.price}&euro;
                                 </div>
 
-                                <a href="#" className="btn btn-success  d-flex justify-content-center mt-3">
-                                        <span className="icon mr-3">
-                                            <FontAwesomeIcon icon={faPlus} />
-                                        </span>
-                                    <span className="text">Add</span>
-                                </a>
+                                {renderAddButton()}
 
                                 <Link to={`/books/${props.book.bookId}`} className="btn btn-primary  d-flex justify-content-center mt-3">
                                     <span className="text">See more</span>

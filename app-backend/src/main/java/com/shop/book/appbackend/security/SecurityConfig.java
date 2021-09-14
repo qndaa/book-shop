@@ -5,9 +5,11 @@ import com.shop.book.appbackend.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -45,12 +47,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(GET, "/api/book/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/author/**").permitAll();
         http.authorizeRequests().antMatchers( "/api/file/**").permitAll();
+        http.authorizeRequests().antMatchers("/images/**").permitAll();
         http.authorizeRequests().antMatchers(POST, "/api/category/**").hasAuthority("ROLE_ADMINISTRATOR");
+        http.authorizeRequests().antMatchers( POST,"/api/customer").hasAuthority("ROLE_CUSTOMER");
+        http.authorizeRequests().antMatchers( POST,"/api/administrator/**").hasAuthority("ROLE_ADMINISTRATOR");
+
         http.authorizeRequests().anyRequest().authenticated();
         //http.authorizeRequests().anyRequest().permitAll();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
 
     @Bean
     @Override

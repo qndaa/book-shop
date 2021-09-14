@@ -15,7 +15,6 @@ const CategoryForm = () => {
        dispatch(createCategory(data)).then(response => {
            reset();
        }).catch(err => {
-           console.log(err);
            toast(err.response.data.message);
        });
     }

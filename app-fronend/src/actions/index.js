@@ -1,11 +1,13 @@
 import {
+    CHANGE_PROFILE_PASSWORD,
+    CHANGE_PROFILE_PHOTO,
     CREATE_CATEGORY,
     FETCH_ALL_BOOKS,
     FETCH_AUTHORS,
     FETCH_CATEGORY,
     FETCH_LOGGED_USER,
     LOGIN,
-    LOGOUT
+    LOGOUT, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER
 } from "./types";
 import api, {getHeader} from "../apis/api";
 
@@ -101,3 +103,57 @@ export const createCategory = (data) => async (dispatch) => {
     }
 
 }
+
+export const changeUserPhoto = data => async (dispatch) => {
+    try {
+        const res = await api.post('/user/photo', data,{headers: getHeader()});
+        dispatch({
+            type: CHANGE_PROFILE_PHOTO,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const changeUserPassword = data => async (dispatch) => {
+    try {
+        const res = await api.post('/user/password', data,{headers: getHeader()});
+        dispatch({
+            type: CHANGE_PROFILE_PASSWORD,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+
+export const updateAdministrator = data => async (dispatch) => {
+    try {
+        const res = await api.post('/administrator', data,{headers: getHeader()});
+        dispatch({
+            type: UPDATE_ADMINISTRATOR,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const updateCustomer = data => async (dispatch) => {
+    try {
+        const res = await api.post('/customer/update', data,{headers: getHeader()});
+        dispatch({
+            type: UPDATE_CUSTOMER,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+

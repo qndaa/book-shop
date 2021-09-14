@@ -5,6 +5,8 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shop.book.appbackend.dto.UsernameAndImageDTO;
+import com.shop.book.appbackend.dto.UsernameAndPasswordDTO;
 import com.shop.book.appbackend.model.Role;
 import com.shop.book.appbackend.model.User;
 import com.shop.book.appbackend.service.UserService;
@@ -17,6 +19,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +42,27 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable String username) {
         User user = userService.getUser(username);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/user/photo")
+    public ResponseEntity<?> changePhoto(@RequestBody UsernameAndImageDTO dto) {
+        try {
+            User user = userService.changePhoto(dto);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/user/password")
+    public ResponseEntity<?> changePassword(@RequestBody UsernameAndPasswordDTO dto) {
+        try {
+            User user = userService.changePassword(dto);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/token/refresh")

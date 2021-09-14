@@ -57,5 +57,12 @@ export function isAdmin() {
         return profile.roles.includes('ROLE_ADMINISTRATOR');
     }
     return false;
+}
 
+export function isCustomer() {
+    if(loggedIn()) {
+        const profile = getProfile();
+        return profile.roles.includes('ROLE_CUSTOMER');
+    }
+    return false;
 }

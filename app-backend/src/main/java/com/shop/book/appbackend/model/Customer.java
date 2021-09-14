@@ -37,7 +37,7 @@ public class Customer extends User {
     private String phoneNumber;
 
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
     @JsonIdentityReference(alwaysAsId = true)
