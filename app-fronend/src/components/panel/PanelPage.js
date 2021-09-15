@@ -7,6 +7,7 @@ import {isAdmin} from "../../apis/api";
 import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import LanguageForm from "./LanguageForm";
+import NewBookForm from "./NewBookForm";
 
 const PanelPage = () => {
 
@@ -36,7 +37,7 @@ const PanelPage = () => {
                             <div className="card-body d-flex justify-content-center">
                                 <div className="row ">
                                     <div className="col mr-2 ">
-                                        <NewAuthorForm/>
+                                        <NewBookForm/>
                                     </div>
                                 </div>
                             </div>

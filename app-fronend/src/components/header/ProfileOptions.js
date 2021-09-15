@@ -77,7 +77,7 @@ const ProfileOptions = () => {
 
 
             <li className="nav-item dropdown no-arrow mx-1">
-                <Link to={`/shoppingCart`} className="nav-link dropdown-toggle"  id="messagesDropdown" role="button"
+                <Link to={`/shoppingCard`} className="nav-link dropdown-toggle"  id="messagesDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <FontAwesomeIcon icon={faShoppingCart} size={`1x`} />
                     <span className="badge badge-danger badge-counter">7</span>

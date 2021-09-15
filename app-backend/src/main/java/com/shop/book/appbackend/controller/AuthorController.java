@@ -9,12 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/author", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,7 +35,12 @@ public class AuthorController {
     public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
 
         return new ResponseEntity<>(authorService.create(author), HttpStatus.OK);
-
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Author> getAuthorById(@PathVariable String id){
+        return new ResponseEntity<>(authorService.getAuthorById(UUID.fromString(id)), HttpStatus.OK);
+    }
+
 
 }

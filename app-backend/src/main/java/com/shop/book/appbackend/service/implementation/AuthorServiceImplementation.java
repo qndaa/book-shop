@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AuthorServiceImplementation implements AuthorService {
@@ -26,5 +27,10 @@ public class AuthorServiceImplementation implements AuthorService {
     @Override
     public Author create(Author author) {
         return authorRepository.save(author);
+    }
+
+    @Override
+    public Author getAuthorById(UUID fromString) {
+        return authorRepository.findById(fromString).get();
     }
 }

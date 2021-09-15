@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import api, {isAdmin, loggedIn} from "../../apis/api";
 
 import Logo from "./Logo";
@@ -7,6 +7,7 @@ import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {faBook} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import SidebarLink from "./SidebarLink";
 import CategoryLink from "./CategoryLink";
 import CategoryForm from "./CategoryForm";
@@ -21,7 +22,7 @@ const Sidebar = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
-    if(!loggedIn()) {
+    if (!loggedIn()) {
         dispatch(logout());
     }
 
@@ -31,20 +32,32 @@ const Sidebar = () => {
 
     const renderCategoryLinks = () => {
         return Object.values(categories).map(item => {
-            return (<CategoryLink key={item.categoryId} to={item.categoryId} name={item.name} num={item.books.length} />);
+            return (
+                <CategoryLink key={item.categoryId} to={item.categoryId} name={item.name} num={item.books.length}/>);
         });
 
     }
 
+    const renderOrdersLink = () => {
+        if (isLoggedIn && isAdmin()) {
+
+            return (<React.Fragment>
+                <SidebarLink icon={faEnvelope} title={`Orders`} to={`/orders`}/>
+                <hr className="sidebar-divider my-0"/>
+            </React.Fragment>);
+        }
+
+    }
+
     const renderForm = () => {
-        if(isLoggedIn && isAdmin()){
-            return <CategoryForm />
+        if (isLoggedIn && isAdmin()) {
+            return <CategoryForm/>
         }
         return null;
     }
 
     const renderPanel = () => {
-        if(isLoggedIn && isAdmin()){
+        if (isLoggedIn && isAdmin()) {
             return (
                 <React.Fragment>
                     <hr className="sidebar-divider my-0"/>
@@ -63,6 +76,7 @@ const Sidebar = () => {
             <SidebarLink icon={faHome} title={`Home page`} to={`/home`}/>
             {renderPanel()}
             <hr className="sidebar-divider my-0"/>
+            {renderOrdersLink()}
             <SidebarLink icon={faUser} title={`Authors`} to={`/authors`}/>
             <hr className="sidebar-divider my-0"/>
             <SidebarLink icon={faBook} title={`Categories`} to={`/categories`}/>
