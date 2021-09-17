@@ -10,29 +10,18 @@ const Book = (props) => {
     const dispatch = useDispatch();
 
     const renderImage = (fileName) => {
+        let resource = URL_BACKEND + '/file/';
         if (fileName !== null) {
-            const resource = URL_BACKEND + '/file/' + fileName;
-            return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200"  alt={`Book!`}/>);
+            resource += fileName;
         } else {
-            return (<div/>)
+            resource += 'default-book.jpeg';
         }
 
+        return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200"  alt={`Book!`}/>);
 
 
     }
 
-    const renderAddButton = () => {
-        if(isCustomer()) {
-            return(
-                <button className="btn btn-success  d-flex justify-content-center mt-3 w-100">
-                                        <span className="icon mr-3">
-                                            <FontAwesomeIcon icon={faPlus} />
-                                        </span>
-                    <span className="text">Add</span>
-                </button>
-            );
-        }
-    }
 
     return (
             <div className="col-xl-2 col-md-5 mb-4">
@@ -50,7 +39,7 @@ const Book = (props) => {
                                     {props.book.price}&euro;
                                 </div>
 
-                                {renderAddButton()}
+
 
                                 <Link to={`/books/${props.book.bookId}`} className="btn btn-primary  d-flex justify-content-center mt-3">
                                     <span className="text">See more</span>
@@ -62,8 +51,6 @@ const Book = (props) => {
                     </div>
                 </div>
             </div>
-
-
     );
 }
 

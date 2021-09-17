@@ -73,8 +73,7 @@ public class Book {
     private Language language;
 
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
-    @JsonIdentityReference(alwaysAsId = true)
+
     @OneToMany(mappedBy = "book")
     private Set<Comment> comments = new HashSet<>();
 

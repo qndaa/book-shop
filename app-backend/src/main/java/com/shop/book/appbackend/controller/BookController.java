@@ -1,6 +1,7 @@
 package com.shop.book.appbackend.controller;
 
 import com.shop.book.appbackend.dto.BookCreateDTO;
+import com.shop.book.appbackend.dto.UpdateBookDTO;
 import com.shop.book.appbackend.model.Book;
 import com.shop.book.appbackend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class BookController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable String id) {
-        return new ResponseEntity<>(bookService.getBookById(UUID.fromString(id)), HttpStatus.OK);
+    public ResponseEntity<Book> getBookById(@PathVariable UUID id) {
+        return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMINISTRATOR')")
@@ -41,6 +42,16 @@ public class BookController {
         try {
             System.out.println(bookDTO);
             return new ResponseEntity<>(bookService.create(bookDTO), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATOR')")
+    @RequestMapping(method = RequestMethod.POST, value = "/update")
+    public ResponseEntity<?> updateBook(@RequestBody UpdateBookDTO updateBookDTO){
+        try {
+            return new ResponseEntity<>(bookService.update(updateBookDTO), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }

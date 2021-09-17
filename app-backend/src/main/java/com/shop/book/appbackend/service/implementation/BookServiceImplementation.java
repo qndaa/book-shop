@@ -1,6 +1,7 @@
 package com.shop.book.appbackend.service.implementation;
 
 import com.shop.book.appbackend.dto.BookCreateDTO;
+import com.shop.book.appbackend.dto.UpdateBookDTO;
 import com.shop.book.appbackend.model.Book;
 import com.shop.book.appbackend.model.Language;
 import com.shop.book.appbackend.repository.AuthorRepository;
@@ -43,12 +44,21 @@ public class BookServiceImplementation implements BookService {
         book.setTitle(bookDTO.getTitle());
         book.setImage(bookDTO.getImage());
         book.setPrice(bookDTO.getPrice());
+        book.setDescription(bookDTO.getDescription());
         book.setQuantity(bookDTO.getQuantity());
         book.setIsbn((bookDTO.getIsbn() == "") ? null : bookDTO.getIsbn());
         Arrays.stream(bookDTO.getAuthorsIds()).forEach(uuid -> book.getAuthors().add(authorRepository.findById(uuid).get()));
         Arrays.stream(bookDTO.getCategoriesIds()).forEach(uuid -> book.getCategories().add(categoryRepository.findById(uuid).get()));
         book.setLanguage(languageRepository.findById(bookDTO.getLanguageId()).get());
 
+        return bookRepository.save(book);
+    }
+
+    @Override
+    public Book update(UpdateBookDTO updateBookDTO) {
+        Book book = bookRepository.findById(updateBookDTO.getId()).get();
+        book.setQuantity(updateBookDTO.getQuantity());
+        book.setPrice(updateBookDTO.getPrice());
         return bookRepository.save(book);
     }
 }

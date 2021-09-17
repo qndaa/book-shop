@@ -22,4 +22,6 @@ export const BLOCK_CUSTOMER = 'BLOCK_CUSTOMER';
 export const UNBLOCK_CUSTOMER = 'UNBLOCK_CUSTOMER';
 
 export const CREATE_BOOK = 'CREATE_BOOK';
+export const FETCH_BOOK = 'FETCH_BOOK';
 
+export const UPDATE_BOOK = 'UPDATE_BOOK';

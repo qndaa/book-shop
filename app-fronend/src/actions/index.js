@@ -4,11 +4,11 @@ import {
     CHANGE_PROFILE_PHOTO, CREATE_AUTHOR, CREATE_BOOK,
     CREATE_CATEGORY, CREATE_LANGUAGE,
     FETCH_ALL_BOOKS,
-    FETCH_AUTHORS,
+    FETCH_AUTHORS, FETCH_BOOK,
     FETCH_CATEGORY, FETCH_CUSTOMERS, FETCH_LANGUAGE,
     FETCH_LOGGED_USER,
     LOGIN,
-    LOGOUT, UNBLOCK_CUSTOMER, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER, UPDATE_LANGUAGE
+    LOGOUT, UNBLOCK_CUSTOMER, UPDATE_ADMINISTRATOR, UPDATE_BOOK, UPDATE_CUSTOMER, UPDATE_LANGUAGE
 } from "./types";
 import api, {getHeader} from "../apis/api";
 
@@ -257,6 +257,32 @@ export const createBook = data => async (dispatch) => {
         const res = await api.post(`/book`, data,{headers: getHeader()});
         dispatch({
             type: CREATE_BOOK,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const fetchBook = id => async (dispatch) => {
+    try {
+        const res = await api.get(`/book/${id}`,{headers: getHeader()});
+        dispatch({
+            type: FETCH_BOOK,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const updateBook = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/book/update`, data,{headers: getHeader()});
+        dispatch({
+            type: UPDATE_BOOK,
             payload: res.data
         });
         return Promise.resolve(res.data);

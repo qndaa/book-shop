@@ -1,4 +1,4 @@
-import {CREATE_BOOK, FETCH_ALL_BOOKS} from "../actions/types";
+import {CREATE_BOOK, FETCH_ALL_BOOKS, UPDATE_BOOK} from "../actions/types";
 import _ from "lodash";
 
 
@@ -8,6 +8,9 @@ export default (state = {}, action) => {
             return {...state, ..._.mapKeys(action.payload, 'bookId') };
         case CREATE_BOOK:
             return {...state, [action.payload.bookId]: action.payload};
+        case UPDATE_BOOK:
+            return {...state, [action.payload.bookId]: action.payload};
+
         default:
             return state;
     }
