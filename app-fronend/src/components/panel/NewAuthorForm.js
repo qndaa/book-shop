@@ -117,7 +117,6 @@ const NewAuthorForm = () => {
 
             <div className="form-group row">
                 <div className="col-sm-12 mb-3 mb-sm-0">
-                    <label className={`ml-3`} htmlFor={`biography`}>Year of birth:</label>
                     <textarea type="textarea"
                            className={`form-control form-control-user ${errors.biography ? 'is-invalid' : ''}`}
                            id="biography"

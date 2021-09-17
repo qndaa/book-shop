@@ -3,12 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {createLanguage, fetchLanguage, updateLanguage} from "../../actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {CREATE_AUTHOR, SELECT_LANGUAGE} from "../../actions/types";
+import {SELECT_LANGUAGE} from "../../actions/types";
 import {useForm} from "react-hook-form";
 import {toast} from "react-toastify";
 
 const LanguageForm = () => {
-
 
     const dispatch = useDispatch();
     const selectedLanguage = useSelector(state => state.select.language);
@@ -36,7 +35,6 @@ const LanguageForm = () => {
 
     const renderLanguages = () => {
         return Object.values(languages).map(item => {
-            console.log(item);
             return (<button key={item.languageId} className={`nav-link  ${(selectedLanguage !== null && item.languageId === selectedLanguage.languageId) ? 'active' : null}`} id="v-pills-home-tab" data-toggle="pill"  role="tab"
                        aria-controls="v-pills-home" aria-selected="true" onClick={() => selectLanguage(item)}>{item.name}</button>);
         })

@@ -1,7 +1,7 @@
 import {
     BLOCK_CUSTOMER,
     CHANGE_PROFILE_PASSWORD,
-    CHANGE_PROFILE_PHOTO, CREATE_AUTHOR,
+    CHANGE_PROFILE_PHOTO, CREATE_AUTHOR, CREATE_BOOK,
     CREATE_CATEGORY, CREATE_LANGUAGE,
     FETCH_ALL_BOOKS,
     FETCH_AUTHORS,
@@ -244,6 +244,19 @@ export const unblockCustomer = id => async (dispatch) => {
         const res = await api.post(`/customer/unblock/${id}`, null,{headers: getHeader()});
         dispatch({
             type: UNBLOCK_CUSTOMER,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const createBook = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/book`, data,{headers: getHeader()});
+        dispatch({
+            type: CREATE_BOOK,
             payload: res.data
         });
         return Promise.resolve(res.data);

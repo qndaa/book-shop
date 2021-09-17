@@ -2,6 +2,7 @@ package com.shop.book.appbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.shop.book.appbackend.model.enums.Gender;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,7 @@ public class Customer extends User {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "administrator_id")
     private Administrator administrator;

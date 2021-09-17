@@ -36,7 +36,7 @@ public class Book {
     @Column(name = "isbn", unique = true)
     private String isbn;
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private int quantity;
 
     @Column(name = "price", nullable = false)
@@ -44,6 +44,9 @@ public class Book {
 
     @Column(name = "image", unique = true)
     private String image;
+
+    @Column(name = "description")
+    private String description;
 
     @ManyToMany
     @JoinTable(
