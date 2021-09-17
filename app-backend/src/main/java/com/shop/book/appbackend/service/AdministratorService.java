@@ -9,4 +9,6 @@ public interface AdministratorService {
     List<Administrator> getAllAdministrators();
 
     Administrator updateAdministrator(UpdateAdministratorDTO dto);
+
+    Administrator getAdministratorByUsername(String username);
 }

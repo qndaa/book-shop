@@ -37,6 +37,10 @@ public class Customer extends User {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "administrator_id")
+    private Administrator administrator;
+
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "customer")

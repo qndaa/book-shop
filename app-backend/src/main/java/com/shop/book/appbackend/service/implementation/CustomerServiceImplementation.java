@@ -6,8 +6,10 @@ import com.shop.book.appbackend.exceptions.UniqueUsernameException;
 import com.shop.book.appbackend.model.Administrator;
 import com.shop.book.appbackend.model.Customer;
 import com.shop.book.appbackend.model.enums.TypeOfUser;
+import com.shop.book.appbackend.repository.AdministratorRepository;
 import com.shop.book.appbackend.repository.CustomerRepository;
 import com.shop.book.appbackend.repository.RoleRepository;
+import com.shop.book.appbackend.service.AdministratorService;
 import com.shop.book.appbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,7 @@ public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepository customerRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AdministratorRepository administratorRepository;
 
     @Override
     public List<Customer> getAllCustomers() {
@@ -69,28 +72,44 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Override
-    public Customer block(String username) {
+    public Customer block(String username, String administrator) {
         Customer customer = customerRepository.findByUsername(username);
+        Administrator admin = administratorRepository.findByUsername(administrator);
         if (customer == null) {
             log.error("Customer not found in database!");
             throw new UsernameNotFoundException("User not found in database!");
         } else {
             log.info("Customer found in database: {}", username);
         }
+        if (admin == null) {
+            log.error("Customer not found in database!");
+            throw new UsernameNotFoundException("User not found in database!");
+        } else {
+            log.info("Customer found in database: {}", administrator);
+        }
+        customer.setAdministrator(admin);
         customer.setBlocked(true);
         return customer;
     }
 
     @Override
-    public Customer unblock(String username) {
+    public Customer unblock(String username, String administrator) {
         Customer customer = customerRepository.findByUsername(username);
+        Administrator admin = administratorRepository.findByUsername(administrator);
         if (customer == null) {
             log.error("Customer not found in database!");
             throw new UsernameNotFoundException("User not found in database!");
         } else {
             log.info("Customer found in database: {}", username);
         }
+        if (admin == null) {
+            log.error("Customer not found in database!");
+            throw new UsernameNotFoundException("User not found in database!");
+        } else {
+            log.info("Customer found in database: {}", administrator);
+        }
         customer.setBlocked(false);
+        customer.setAdministrator(admin);
         return customer;
     }
 

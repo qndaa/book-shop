@@ -12,9 +12,9 @@ public interface CustomerService {
 
     Customer updateCustomer(UpdateCustomerDTO dto);
 
-    Customer block(String username);
+    Customer block(String username, String administrator);
 
-    Customer unblock(String username);
+    Customer unblock(String username, String administrator);
 
     Customer findCustomerByUsername(String username);
 

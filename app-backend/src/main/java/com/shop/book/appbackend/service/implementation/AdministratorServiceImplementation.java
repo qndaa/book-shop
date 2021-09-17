@@ -43,4 +43,9 @@ public class AdministratorServiceImplementation implements AdministratorService 
         return administratorRepository.save(administrator);
 
     }
+
+    @Override
+    public Administrator getAdministratorByUsername(String username) {
+        return administratorRepository.findByUsername(username);
+    }
 }
