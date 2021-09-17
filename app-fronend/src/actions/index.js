@@ -1,13 +1,14 @@
 import {
+    BLOCK_CUSTOMER,
     CHANGE_PROFILE_PASSWORD,
     CHANGE_PROFILE_PHOTO, CREATE_AUTHOR,
     CREATE_CATEGORY, CREATE_LANGUAGE,
     FETCH_ALL_BOOKS,
     FETCH_AUTHORS,
-    FETCH_CATEGORY, FETCH_LANGUAGE,
+    FETCH_CATEGORY, FETCH_CUSTOMERS, FETCH_LANGUAGE,
     FETCH_LOGGED_USER,
     LOGIN,
-    LOGOUT, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER, UPDATE_LANGUAGE
+    LOGOUT, UNBLOCK_CUSTOMER, UPDATE_ADMINISTRATOR, UPDATE_CUSTOMER, UPDATE_LANGUAGE
 } from "./types";
 import api, {getHeader} from "../apis/api";
 
@@ -204,6 +205,45 @@ export const createLanguage = data => async (dispatch) => {
         const res = await api.post('/language', data,{headers: getHeader()});
         dispatch({
             type: CREATE_LANGUAGE,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const fetchCustomers = () => async (dispatch) => {
+    try {
+        const res = await api.get('/customer',{headers: getHeader()});
+        dispatch({
+            type: FETCH_CUSTOMERS,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const blockCustomer = id => async (dispatch) => {
+    try {
+        const res = await api.post(`/customer/block/${id}`, null,{headers: getHeader()});
+        dispatch({
+            type: BLOCK_CUSTOMER,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const unblockCustomer = id => async (dispatch) => {
+    try {
+        const res = await api.post(`/customer/unblock/${id}`, null,{headers: getHeader()});
+        dispatch({
+            type: UNBLOCK_CUSTOMER,
             payload: res.data
         });
         return Promise.resolve(res.data);

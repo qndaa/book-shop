@@ -67,4 +67,35 @@ public class CustomerServiceImplementation implements CustomerService {
 
         return customerRepository.save(customer);
     }
+
+    @Override
+    public Customer block(String username) {
+        Customer customer = customerRepository.findByUsername(username);
+        if (customer == null) {
+            log.error("Customer not found in database!");
+            throw new UsernameNotFoundException("User not found in database!");
+        } else {
+            log.info("Customer found in database: {}", username);
+        }
+        customer.setBlocked(true);
+        return customer;
+    }
+
+    @Override
+    public Customer unblock(String username) {
+        Customer customer = customerRepository.findByUsername(username);
+        if (customer == null) {
+            log.error("Customer not found in database!");
+            throw new UsernameNotFoundException("User not found in database!");
+        } else {
+            log.info("Customer found in database: {}", username);
+        }
+        customer.setBlocked(false);
+        return customer;
+    }
+
+    @Override
+    public Customer findCustomerByUsername(String username) {
+        return customerRepository.findByUsername(username);
+    }
 }

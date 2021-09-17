@@ -8,12 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,16 +40,16 @@ public class Customer extends User {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "customer")
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "markId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "customer")
-    private Set<Mark> marks;
+    private Set<Mark> marks = new HashSet<>();
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "orderId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "customer")
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 
 }

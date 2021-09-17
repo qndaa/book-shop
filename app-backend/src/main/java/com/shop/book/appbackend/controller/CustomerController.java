@@ -4,7 +4,6 @@ import com.shop.book.appbackend.dto.UpdateAdministratorDTO;
 import com.shop.book.appbackend.dto.UpdateCustomerDTO;
 import com.shop.book.appbackend.exceptions.UniqueEmailException;
 import com.shop.book.appbackend.exceptions.UniqueUsernameException;
-import com.shop.book.appbackend.model.Administrator;
 import com.shop.book.appbackend.model.Customer;
 import com.shop.book.appbackend.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +50,28 @@ public class CustomerController {
         try {
             Customer user = customerService.updateCustomer(dto);
             return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATOR')")
+    @RequestMapping(method = RequestMethod.POST, value = "/block/{username}")
+    public ResponseEntity<?> blockCustomer(@PathVariable String username) {
+        try {
+            Customer customer = customerService.block(username);
+            return new ResponseEntity<>(customer, HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATOR')")
+    @RequestMapping(method = RequestMethod.POST, value = "/unblock/{username}")
+    public ResponseEntity<?> unblockCustomer(@PathVariable String username) {
+        try {
+            Customer customer = customerService.unblock(username);
+            return new ResponseEntity<>(customer, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }

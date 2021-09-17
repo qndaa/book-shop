@@ -18,6 +18,7 @@ import SingleBookPage from "./books/SingleBookPage";
 import PanelPage from "./panel/PanelPage";
 import ShoppingCardPage from "./card/ShoppingCardPage";
 import OrdersPage from "./orders/OrdersPage";
+import CustomerPage from "./customers/CustomerPage";
 
 
 
@@ -37,6 +38,7 @@ const App = () => {
                                 <Route path={'/registration'} exact component={RegistrationPage}/>
                                 <Route path={'/shoppingCard'} exact component={ShoppingCardPage} />
                                 <Route path={`/orders`} exact component={OrdersPage} />
+                                <Route path={`/customers`} exact component={CustomerPage} />
                                 <Route path={`/books/:id`} exact component={SingleBookPage} />
                                 <Route path={`/profile`} exact component={Profile} />
                                 <Route path={`/authors`} exact component={AuthorsPage} />

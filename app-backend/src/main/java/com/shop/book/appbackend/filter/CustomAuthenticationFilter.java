@@ -5,6 +5,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shop.book.appbackend.dto.LoginInfoDTO;
 import com.shop.book.appbackend.dto.LoginParamsDTO;
+import com.shop.book.appbackend.model.Customer;
+import com.shop.book.appbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -29,9 +31,13 @@ import java.util.stream.Collectors;
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+    private final CustomerService customerService;
 
-    public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
+
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager, CustomerService customerService) {
         this.authenticationManager = authenticationManager;
+        this.customerService = customerService;
+
     }
 
     @Override
@@ -60,6 +66,14 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         Map<String, String> tokens = new HashMap<>();
         tokens.put("token", access_token);
+        Customer customer = customerService.findCustomerByUsername(user.getUsername());
+        if (customer != null && customer.isBlocked()) {
+            tokens.put("blocked", "true");
+
+        } else {
+            tokens.put("blocked", "flase");
+        }
+
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(200);
         new ObjectMapper().writeValue(response.getOutputStream(), tokens);

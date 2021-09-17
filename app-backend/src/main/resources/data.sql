@@ -118,7 +118,7 @@ insert into administrators(user_id) values ('e194ba33-c08c-4839-ae38-05b1904407d
 insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'Marko', 'Markovic', 'marko', '$2a$10$o1508kIPKW6yvEG.g/ezLeTe7Ah15ELRVTFAmExUiV15dMIrtSIsy', 1, null);
 insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth) values ('9592a9df-811b-44f2-8b26-47e8478eb256', false, 'marko@gmail.com', 0, '++387-65-555-55-55', '1990-09-10');
 insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('ceedb308-8c95-4561-b046-516718339d68', 'Andjela', 'Andjelkovic', 'andjela', '$2a$12$/yfrPRXeh4pjIv9vBgL8rO4LBAljGG4fCBosz..EEdSfvD8.Rc6GS', 1, null);
-insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth) values ('ceedb308-8c95-4561-b046-516718339d68', false, 'andjela@gmail.com', 0, null, null);
+insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth) values ('ceedb308-8c95-4561-b046-516718339d68', true, 'andjela@gmail.com', 0, null, null);
 
 
 insert into users_roles(user_id, role_id) values ('e194ba33-c08c-4839-ae38-05b1904407d2', '1358136f-d0aa-4361-90c0-b7e38a664bdc');

@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -49,7 +50,7 @@ public class Book {
             name = "books_categories",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet();
 
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "authorId")
@@ -59,7 +60,7 @@ public class Book {
             name = "books_by_authors",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "languageId")
@@ -72,16 +73,16 @@ public class Book {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "commentId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "book")
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "markId")
     @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "book")
-    private Set<Mark> marks;
+    private Set<Mark> marks = new HashSet();
 
     @JsonIgnore
     @OneToMany(mappedBy = "book")
-    private Set<OrderLine> orderLines;
+    private Set<OrderLine> orderLines =  new HashSet<>();
 
 
 }

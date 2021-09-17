@@ -15,7 +15,6 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "categories")
-
 public class Category {
 
     @Id
@@ -29,7 +28,7 @@ public class Category {
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "bookId")
     @JsonIdentityReference(alwaysAsId = true)
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Book> books = new HashSet<>();
-
 }
+

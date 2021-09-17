@@ -5,6 +5,7 @@ import authors from "./authors";
 import categories from "./categories";
 import languages from "./languages";
 import select from "./select";
+import customers from "./customers";
 
 export default combineReducers({
     user,
@@ -12,5 +13,6 @@ export default combineReducers({
     authors: authors,
     categories: categories,
     languages: languages,
-    select: select
+    select: select,
+    customers: customers
 });

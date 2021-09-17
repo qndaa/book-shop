@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import { login} from "../../actions";
+import {login, logout} from "../../actions";
 import {toast} from "react-toastify";
 
 
@@ -14,13 +14,18 @@ const LoginForm = () => {
     const submit = (data) => {
 
         dispatch(login(data.username, data.password))
-            .then(() => {
-                history.push('/home');
-                toast.success("Success login!")
+            .then((response) => {
+                console.log(response);
+                if(response.blocked === "true") {
+                    toast.warning("Customer is blocked!")
+                    dispatch(logout());
+                } else {
+                    toast.success("Success login!")
+                    history.push('/home');
 
-
+                }
             }).catch(err => {
-                toast.error('Invalid username or password!');
+                toast.error("Invalid username or password!");
             });
 
     }
