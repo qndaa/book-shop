@@ -2,13 +2,24 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {createComment, createMark} from "../../actions";
+import {toast} from "react-toastify";
+import {useDispatch} from "react-redux";
 
 const MarkPanel = (props) => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const dispatch = useDispatch();
 
     const submit = (data) => {
-        console.log(data);
+        dispatch(createMark({
+            bookId: props.book.bookId,
+            value: data.mark
+        })).then((response) => {
+            toast.success('Mark is written!');
+            props.setBook(response);
+            reset();
+        })
     }
 
     return (

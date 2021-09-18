@@ -25,3 +25,8 @@ export const CREATE_BOOK = 'CREATE_BOOK';
 export const FETCH_BOOK = 'FETCH_BOOK';
 
 export const UPDATE_BOOK = 'UPDATE_BOOK';
+
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const CREATE_MARK = 'CREATE_MARK';
+export const APPROVE_COMMENT = 'APPROVE_COMMENT';
+export const DECLINE_COMMENT = 'DECLINE_COMMENT';

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -44,13 +45,12 @@ public class BookServiceImplementation implements BookService {
         book.setTitle(bookDTO.getTitle());
         book.setImage(bookDTO.getImage());
         book.setPrice(bookDTO.getPrice());
-        book.setDescription(bookDTO.getDescription());
+        book.setDescription((Objects.equals(bookDTO.getDescription().trim(), "")) ? null : bookDTO.getDescription());
         book.setQuantity(bookDTO.getQuantity());
-        book.setIsbn((bookDTO.getIsbn() == "") ? null : bookDTO.getIsbn());
+        book.setIsbn((Objects.equals(bookDTO.getIsbn().trim(), "")) ? null : bookDTO.getIsbn());
         Arrays.stream(bookDTO.getAuthorsIds()).forEach(uuid -> book.getAuthors().add(authorRepository.findById(uuid).get()));
         Arrays.stream(bookDTO.getCategoriesIds()).forEach(uuid -> book.getCategories().add(categoryRepository.findById(uuid).get()));
         book.setLanguage(languageRepository.findById(bookDTO.getLanguageId()).get());
-
         return bookRepository.save(book);
     }
 

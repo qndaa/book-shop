@@ -77,8 +77,7 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<Comment> comments = new HashSet<>();
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "markId")
-    @JsonIdentityReference(alwaysAsId = true)
+
     @OneToMany(mappedBy = "book")
     private Set<Mark> marks = new HashSet();
 

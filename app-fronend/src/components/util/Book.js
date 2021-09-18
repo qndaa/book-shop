@@ -16,10 +16,7 @@ const Book = (props) => {
         } else {
             resource += 'default-book.jpeg';
         }
-
         return (<img className="img-fluid border border-secondary" src={resource} height="200" width="200"  alt={`Book!`}/>);
-
-
     }
 
 

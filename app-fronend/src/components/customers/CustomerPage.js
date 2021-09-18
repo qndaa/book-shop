@@ -22,8 +22,6 @@ const CustomerPage = () => {
     }
 
 
-
-
     const renderButton = (blocked, username) => {
         if (blocked) {
             return <button key={username} className={`btn btn-success w-50`} onClick={() => dispatch(unblockCustomer(username)).then(()=> toast.success("Customer unblocked!"))}>Unblock</button>
@@ -49,7 +47,6 @@ const CustomerPage = () => {
 
                                     <div style={{height: 50}} className="d-flex justify-content-center text-xl font-weight-bold text-primary mb-1 ">
                                         {renderButton(customer.blocked, customer.username)}
-
                                     </div>
 
                                 </div>

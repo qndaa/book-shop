@@ -21,7 +21,7 @@ const AdminPanel = (props) => {
     }
 
     return (
-        <div className={`col-12 mt-5`}>
+        <div className={`col-12 mt-5 border gray rounded-`}>
             <label className={`ml-3 h5`}>Update book: </label>
             <form className="user " onSubmit={handleSubmit(submit)}>
                 <div className="form-group row">

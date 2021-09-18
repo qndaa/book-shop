@@ -118,7 +118,7 @@ insert into administrators(user_id) values ('e194ba33-c08c-4839-ae38-05b1904407d
 insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'Marko', 'Markovic', 'marko', '$2a$10$o1508kIPKW6yvEG.g/ezLeTe7Ah15ELRVTFAmExUiV15dMIrtSIsy', 1, null);
 insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth, administrator_id) values ('9592a9df-811b-44f2-8b26-47e8478eb256', false, 'marko@gmail.com', 0, '++387-65-555-55-55', '1990-09-10', null);
 insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('ceedb308-8c95-4561-b046-516718339d68', 'Andjela', 'Andjelkovic', 'andjela', '$2a$12$/yfrPRXeh4pjIv9vBgL8rO4LBAljGG4fCBosz..EEdSfvD8.Rc6GS', 1, null);
-insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth, administrator_id) values ('ceedb308-8c95-4561-b046-516718339d68', true, 'andjela@gmail.com', 0, null, null, null);
+insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth, administrator_id) values ('ceedb308-8c95-4561-b046-516718339d68', false, 'andjela@gmail.com', 0, null, null, null);
 
 
 insert into users_roles(user_id, role_id) values ('e194ba33-c08c-4839-ae38-05b1904407d2', '1358136f-d0aa-4361-90c0-b7e38a664bdc');
@@ -135,12 +135,6 @@ insert into streets(street_id, name, city_id) values ('a9a1f6c2-6d16-466b-a804-9
 
 insert into locations(location_id, street_id, number) values ('a4732d22-420c-42d3-bf50-0861897bf3dd', '1f7fad28-fde5-41ff-ab7f-308155617a1e', '4');
 
-
-insert into marks(mark_id, book_id, user_id, value) values ('eb000775-0f04-42bd-be12-d9f7a3799fb8', '2d3e1642-2714-48cb-8f1a-8b10abaf0651', '9592a9df-811b-44f2-8b26-47e8478eb256', 5);
-insert into marks(mark_id, book_id, user_id, value) values ('ccedd8f3-be98-4aa9-adb3-dc3557e35187', '5b7f6e56-d309-45ee-8db7-7c799c43f7ab', '9592a9df-811b-44f2-8b26-47e8478eb256', 3);
-
-insert into comments(comment_id, book_id, user_id, content) values ('90cc6ccc-b2ee-4b6b-955e-624733ff106a', '2d3e1642-2714-48cb-8f1a-8b10abaf0651', '9592a9df-811b-44f2-8b26-47e8478eb256', 'Top knjiga. Sve preporuke!');
-insert into comments(comment_id, book_id, user_id, content) values ('7f5d2f07-1600-4b56-b2a7-8ba99dab50aa', '5b7f6e56-d309-45ee-8db7-7c799c43f7ab', '9592a9df-811b-44f2-8b26-47e8478eb256', 'Onako! Ima boljih prica...');
 
 insert into orders(order_id, location_id, user_id, total_money) values ('a26c3312-c6f7-440b-a401-216bf1f24d04', 'a4732d22-420c-42d3-bf50-0861897bf3dd', '9592a9df-811b-44f2-8b26-47e8478eb256', 20);
 

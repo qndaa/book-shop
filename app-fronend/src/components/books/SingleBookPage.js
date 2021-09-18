@@ -3,13 +3,16 @@ import NewAuthorForm from "../panel/NewAuthorForm";
 import NewBookForm from "../panel/NewBookForm";
 import LanguageForm from "../panel/LanguageForm";
 import {useDispatch} from "react-redux";
-import {fetchBook, logout} from "../../actions";
-import api, {isAdmin, isCustomer, loggedIn, URL_BACKEND} from "../../apis/api";
+import {approveComment, declineComment, fetchBook, logout} from "../../actions";
+import api, {getProfile, isAdmin, isCustomer, loggedIn, URL_BACKEND} from "../../apis/api";
 import AdminPanel from "./AdminPanel";
 import CustomerPanel from "./CustomerPanel";
 import CommentPanel from "./CommentPanel";
 import MarkPanel from "./MarkPanel";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSave, faTrash, faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import {useForm} from "react-hook-form";
+import {toast} from "react-toastify";
 
 
 const SingleBookPage = (props) => {
@@ -21,7 +24,6 @@ const SingleBookPage = (props) => {
 
     useEffect(() => {
         api.get('/book/' + id).then(response => {
-            console.log(response);
             setBook(response.data);
         })
     }, [])
@@ -41,22 +43,27 @@ const SingleBookPage = (props) => {
     }
 
     const renderAdminPanel = () => {
-        if(!loggedIn()) {
+        if (!loggedIn()) {
             dispatch(logout());
         }
 
-      if (isAdmin()) {
-          return (
-              <AdminPanel book={book} setBook={setBook} />
-          );
-      } else if (isCustomer())
-          return <CustomerPanel book={book} />
+        if (isAdmin()) {
+            return (
+                <AdminPanel book={book} setBook={setBook}/>
+            );
+        } else if (isCustomer())
+            return <CustomerPanel book={book}/>
     }
 
     const renderMarkPanel = () => {
         if (isCustomer()) {
+            for (let item of book.marks) {
+                if (item.customer.username === getProfile().sub) {
+                    return null
+                }
+            }
             return (
-                <MarkPanel book={book} />
+                <MarkPanel book={book} setBook={setBook}/>
             );
         } else {
             return null;
@@ -64,18 +71,146 @@ const SingleBookPage = (props) => {
     }
 
 
-
     const renderCommentPanel = () => {
         if (isCustomer()) {
-            return (<CommentPanel book={book}/>);
+            for (let item of book.comments) {
+                if (item.customer.username === getProfile().sub && (item.status === 'APPROVED' || item.status === 'NO_STATUS')) {
+                    return null;
+                }
+            }
+
+            return (<CommentPanel book={book} setBook={setBook}/>);
         } else {
             return null;
         }
     }
 
     const getMark = (book) => {
-        return (book.marks.length === 0) ? 'There are no marks!' : "racunacu kasnije";
+        if (book.marks.length === 0) {
+            return 'There are no marks!';
+        } else {
+            let sum = 0;
+            for (let item of book.marks) {
+                sum += item.value;
+            }
+            return "Average mark: " + (sum / book.marks.length);
+        }
     }
+
+
+    const renderComments = () => {
+
+        let comments = [];
+        if (isAdmin()) {
+            comments = book.comments;
+        } else {
+
+            comments = book.comments.filter(item => {
+                if (item.status === 'APPROVED') {
+                    return item;
+                }
+            })
+
+
+        }
+
+        if (comments.length === 0) {
+            return <label className={`h4 ml-1 row`}>There is no comments!</label>
+        } else {
+
+            return (
+                <React.Fragment>
+                    <label className={`h4 ml-1 row`}>Comments:</label>
+                    {renderComment(comments)}
+                </React.Fragment>
+            );
+
+
+        }
+    }
+
+    const renderImageUser = (fileName) => {
+        let resource = URL_BACKEND + '/file/default-profile.png';
+        if (fileName !== null) {
+            resource = URL_BACKEND + '/file/' + fileName;
+        }
+        return (<img className="rounded-circle" src={resource} style={{height: 30, width: 30}} alt={`Customer!`}/>);
+    }
+
+    const renderApproveButton = (com) => {
+        if(isAdmin()) {
+            if (com.status === 'NO_STATUS') {
+                return (
+                    <button className={`btn btn-outline-primary mb-2`} onClick={() => {
+                        dispatch(approveComment(com.commentId)).then((response) => {
+                            toast.success("Comment is approved!");
+                            api.get('/book/' + id).then(response => {
+                                setBook(response.data);
+                            })
+                        })
+                    }}>
+                        <FontAwesomeIcon color={`bluetooth`} icon={faThumbsUp}/>
+                    </button>
+                )
+            }
+        }
+
+    }
+
+    const renderDeclineButton = (com) => {
+        if (isAdmin()) {
+            if (com.status === 'NO_STATUS' || com.status === 'APPROVED') {
+                return (
+                    <button className={`btn btn-outline-danger`} onClick={() => {
+                        dispatch(declineComment(com.commentId)).then((response) => {
+                            toast.success("Comment is declined!");
+                            api.get('/book/' + id).then(response => {
+                                setBook(response.data);
+                            })
+                        })
+                    }}>
+                        <FontAwesomeIcon icon={faTrash}/>
+                    </button>
+                )
+            }
+        }
+
+    }
+
+    const renderComment = (comments) => {
+
+        return comments.map((item) => {
+                return (
+                    <div className="mt-4 border gray rounded-3 p-3">
+                        <div className={`row`}>
+                            <div className={`col-1`}>
+                                {renderImageUser(item.customer.image)}
+                            </div>
+
+                            <div className={`col-5`}>
+                                <h4 className={`ml-1 mt-1`}>{item.customer.firstName + ' ' + item.customer.lastName}</h4>
+                            </div>
+                            <div className={`col-4`}>
+                                <label className={`mt-1`}>{item.date}</label>
+                            </div>
+
+                            <div className={`col-1`}>
+                                {renderApproveButton(item)}
+                            </div>
+
+                            <div className={`col-1`}>
+                                {renderDeclineButton(item)}
+
+                            </div>
+
+                        </div>
+                        <p>{item.content}</p>
+                    </div>
+                );
+            }
+        )
+    }
+
 
     return (
         <div className="container-fluid">
@@ -99,7 +234,8 @@ const SingleBookPage = (props) => {
                                         <label className={` h4`} htmlFor={`dateOfBirth`}>Price: {book.price}</label>
                                     </div>
                                     <div className={`col-12 d-flex justify-content-center`}>
-                                        <label className={`h4`} htmlFor={`dateOfBirth`}>Quantity: {book.quantity}</label>
+                                        <label className={`h4`}
+                                               htmlFor={`dateOfBirth`}>Quantity: {book.quantity}</label>
                                     </div>
                                     <div className={`col-12 d-flex justify-content-center`}>
                                         <label className={` h4`} htmlFor={`dateOfBirth`}>ISBN: {book.isbn}</label>
@@ -109,16 +245,20 @@ const SingleBookPage = (props) => {
                                         <label className={` h4`} htmlFor={`dateOfBirth`}>{getMark(book)}</label>
 
                                     </div>
-                                    {renderCommentPanel(book)}
-                                    {renderMarkPanel(book)}
-
+                                    <div className={`mt-5 border gray rounded-3 p-3` }>
+                                        {renderCommentPanel(book)}
+                                        {renderMarkPanel(book)}
+                                    </div>
 
 
                                 </div>
                                 <div className="col-6 mr-2 ">
-                                    <label className={`h4 row`}>{book.description === null ? "There is no description!" : 'Description:'}</label>
-                                    <label className={`row`}>{book.description === null ? "" : book.description}</label>
-                                    <label className={`h4 row`}>{book.comments.length === 0 ? "There is no comments!" : "Comments:"}</label>
+                                    <label
+                                        className={`h4 ml-1 row`}>{book.description === null ? "There is no description!" : 'Description:'}</label>
+                                    <label
+                                        className={`row ml-1`}>{book.description === null ? "" : book.description}</label>
+                                    {renderComments()}
+
                                 </div>
 
                                 <div className={`col-2 mr-2`}>

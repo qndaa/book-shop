@@ -1,8 +1,9 @@
 import {
+    APPROVE_COMMENT,
     BLOCK_CUSTOMER,
     CHANGE_PROFILE_PASSWORD,
     CHANGE_PROFILE_PHOTO, CREATE_AUTHOR, CREATE_BOOK,
-    CREATE_CATEGORY, CREATE_LANGUAGE,
+    CREATE_CATEGORY, CREATE_COMMENT, CREATE_LANGUAGE, CREATE_MARK, DECLINE_COMMENT,
     FETCH_ALL_BOOKS,
     FETCH_AUTHORS, FETCH_BOOK,
     FETCH_CATEGORY, FETCH_CUSTOMERS, FETCH_LANGUAGE,
@@ -283,6 +284,59 @@ export const updateBook = data => async (dispatch) => {
         const res = await api.post(`/book/update`, data,{headers: getHeader()});
         dispatch({
             type: UPDATE_BOOK,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const createComment = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/comment`, data,{headers: getHeader()});
+        dispatch({
+            type: CREATE_COMMENT,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const createMark = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/mark`, data,{headers: getHeader()});
+        dispatch({
+            type: CREATE_MARK,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+
+export const approveComment = id => async (dispatch) => {
+    try {
+        const res = await api.post(`/comment/approve/${id}`, null,{headers: getHeader()});
+        dispatch({
+            type: APPROVE_COMMENT,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const declineComment = id => async (dispatch) => {
+    try {
+        const res = await api.post(`/comment/decline/${id}`, null,{headers: getHeader()});
+        dispatch({
+            type: DECLINE_COMMENT,
             payload: res.data
         });
         return Promise.resolve(res.data);

@@ -2,17 +2,28 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {useDispatch} from "react-redux";
+import {createComment} from "../../actions";
+import {toast} from "react-toastify";
 
-const CommentPanel = () => {
+const CommentPanel = (props) => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const dispatch = useDispatch();
 
     const submit = (data) => {
-        console.log(data);
+        dispatch(createComment({
+            bookId: props.book.bookId,
+            content: data.comment
+        })).then((response) => {
+            toast.success('Comment is written!');
+            props.setBook(response);
+            reset();
+        })
     }
 
     return (
-        <div className={`col-12 mt-5`}>
+        <div className={`col-12 `}>
             <label className={`ml-3 h5`}>Form for comment: </label>
             <form className="user " onSubmit={handleSubmit(submit)}>
                 <div className="form-group row">

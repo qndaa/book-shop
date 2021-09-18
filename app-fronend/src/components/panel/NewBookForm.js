@@ -211,6 +211,7 @@ const NewBookForm = () => {
                 <div className="col-sm-6 mb-3 mb-sm-0">
                     <label className={`ml-3`} htmlFor={`price`}>Price in &euro;:</label>
                     <input type="number"
+                           step={0.01}
                            className={`form-control form-control-user ${errors.price ? 'is-invalid' : ''}`}
                            id="price"
                            placeholder="Price"
@@ -227,8 +228,6 @@ const NewBookForm = () => {
                            {...register('quantity', {required: "Please input quantity!",min: 0, message: 'Min number is 0.'})}/>
                     {errors.quantity && <div className="invalid-feedback ml-3">{errors.quantity.message}</div>}
                 </div>
-
-
             </div>
 
             <div className="form-group row">
