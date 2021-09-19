@@ -76,7 +76,7 @@ public class OrderServiceImplementation implements OrderService {
         });
 
         shoppingCartService.refreshShoppingCart(username);
-
+        
         return finalOrder;
     }
 

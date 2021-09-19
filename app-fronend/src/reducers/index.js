@@ -9,6 +9,7 @@ import customers from "./customers";
 import shoppingCart from "./shoppingCart";
 import cities from "./cities";
 import orders from "./orders";
+import search from "./search";
 
 export default combineReducers({
     user,
@@ -20,6 +21,7 @@ export default combineReducers({
     customers: customers,
     shoppingCart: shoppingCart,
     cities: cities,
-    orders: orders
+    orders: orders,
+    search: search
 
 });

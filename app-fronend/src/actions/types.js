@@ -48,3 +48,5 @@ export const CREATE_ORDER = 'CREATE_ORDER';
 export const CANCEL_ORDER = 'CANCEL_ORDER';
 export const APPROVE_ORDER = 'APPROVE_ORDER';
 export const DECLINE_ORDER = 'DECLINE_ORDER';
+
+export const SEARCH = 'SEARCH';
