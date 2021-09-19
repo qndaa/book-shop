@@ -17,4 +17,5 @@ public interface ShoppingCartService {
     OrderLine updateOrderLine(String username, CartItemDTO cartItem);
     OrderLine deleteOrderLine(String username, CartItemDTO cartItem);
 
+    void refreshShoppingCart(String username);
 }

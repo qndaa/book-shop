@@ -2,6 +2,7 @@ package com.shop.book.appbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,8 +35,8 @@ public class City {
     @Column(name = "zip_code", unique = true)
     private long zipCode;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "streetId")
-    @JsonIdentityReference(alwaysAsId = true)
-    @OneToMany(mappedBy = "city")
-    private Set<Street> streets;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private Set<Location> locations = new HashSet<>();
 }

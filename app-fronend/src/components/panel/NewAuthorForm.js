@@ -35,7 +35,6 @@ const NewAuthorForm = () => {
     }
 
     const submit = (data) => {
-        console.log(data);
         dispatch(createAuthor({
             firstName: data.firstName,
             lastName: data.lastName,

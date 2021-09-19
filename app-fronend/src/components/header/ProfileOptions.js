@@ -7,7 +7,7 @@ import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {toast} from "react-toastify";
-import {getProfile, loggedIn, URL_BACKEND} from "../../apis/api";
+import {getProfile, isCustomer, loggedIn, URL_BACKEND} from "../../apis/api";
 
 const ProfileOptions = () => {
 
@@ -52,6 +52,20 @@ const ProfileOptions = () => {
         setShowDropdownUser(!showDropdownUser);
     }
 
+    const renderShop = () => {
+        if(isLoggedIn && isCustomer()) {
+            return (<li className="nav-item dropdown no-arrow mx-1">
+                <Link to={`/shoppingCard`} className="nav-link dropdown-toggle"  id="messagesDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <FontAwesomeIcon icon={faShoppingCart} size={`1x`} />
+                    <span className="badge badge-danger badge-counter">{(shoppingCart !== undefined) ? Object.values(shoppingCart).length : 0}</span>
+                </Link>
+            </li>);
+        } else {
+            return null
+        }
+    }
+
     return (
 
         <ul className="navbar-nav ml-auto">
@@ -78,13 +92,7 @@ const ProfileOptions = () => {
             </li>
 
 
-            <li className="nav-item dropdown no-arrow mx-1">
-                <Link to={`/shoppingCard`} className="nav-link dropdown-toggle"  id="messagesDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <FontAwesomeIcon icon={faShoppingCart} size={`1x`} />
-                    <span className="badge badge-danger badge-counter">{(shoppingCart !== undefined) ? Object.values(shoppingCart).length : 0}</span>
-                </Link>
-            </li>
+            {renderShop()}
 
             <div className="topbar-divider d-none d-sm-block"/>
 

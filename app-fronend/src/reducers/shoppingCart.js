@@ -10,7 +10,7 @@ import _ from "lodash";
 export default (state = {}, action) => {
     switch (action.type) {
         case FETCH_SHOPPING_CART:
-            return {...state, ..._.mapKeys(action.payload, 'orderLineId') };
+            return {..._.mapKeys(action.payload, 'orderLineId')};
         case ADD_TO_SHOPPING_CART:
             return {...state, [action.payload.orderLineId]: action.payload};
         case UPDATE_SHOPPING_CART:

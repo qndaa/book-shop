@@ -82,4 +82,10 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
         }
         return null;
     }
+
+    @Override
+    public void refreshShoppingCart(String username) {
+        shoppingCarts.remove(username);
+        shoppingCarts.put(username, new ArrayList<>());
+    }
 }

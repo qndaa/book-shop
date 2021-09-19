@@ -7,6 +7,8 @@ import languages from "./languages";
 import select from "./select";
 import customers from "./customers";
 import shoppingCart from "./shoppingCart";
+import cities from "./cities";
+import orders from "./orders";
 
 export default combineReducers({
     user,
@@ -17,5 +19,7 @@ export default combineReducers({
     select: select,
     customers: customers,
     shoppingCart: shoppingCart,
+    cities: cities,
+    orders: orders
 
 });

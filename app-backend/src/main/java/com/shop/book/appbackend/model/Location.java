@@ -11,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ public class Location {
     private UUID locationId;
 
     @Column(name = "number", nullable = false)
-    private String number;
+    private Integer number;
 
     @Column(name = "longitude")
     private Double longitude;
@@ -37,13 +38,16 @@ public class Location {
     @Column(name = "latitude")
     private Double latitude;
 
+    @Column(name = "street")
+    private String street;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "street_id", nullable = false)
-    private Street street;
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "orderId")
     @JsonIdentityReference(alwaysAsId = true)
-    @OneToMany(mappedBy = "location")
-    private Set<Order> orders;
+    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+    private Set<Order> orders = new HashSet<>();
 
 }

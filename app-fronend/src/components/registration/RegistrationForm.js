@@ -16,7 +16,7 @@ const RegistrationForm = () => {
                 history.push('/login');
             }
         }).catch(err => {
-            toast(err.response.data.message);
+            toast.error(err.response.data.message);
         });
     }
 

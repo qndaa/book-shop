@@ -15,6 +15,11 @@ const CustomerPanel = (props) => {
     const dispatch = useDispatch();
 
     const submit = (data) => {
+        if(data.quantity > props.book.quantity) {
+            toast.info("Quantity is too much!");
+            return;
+        }
+
         dispatch(addToShoppingCart({
             quantity: data.quantity,
             id: props.book.bookId

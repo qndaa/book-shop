@@ -21,7 +21,7 @@ const AdminPanel = (props) => {
     }
 
     return (
-        <div className={`col-12 mt-5 border gray rounded-`}>
+        <div className={`col-12 mt-5 border gray rounded-3 p-3`}>
             <label className={`ml-3 h5`}>Update book: </label>
             <form className="user " onSubmit={handleSubmit(submit)}>
                 <div className="form-group row">
@@ -58,7 +58,6 @@ const AdminPanel = (props) => {
                     <button className={`btn btn-success btn-user`} type={`submit`}>
                         Update
                     </button>
-
                 </div>
 
 

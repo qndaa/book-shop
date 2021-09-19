@@ -1,5 +1,7 @@
 package com.shop.book.appbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shop.book.appbackend.model.enums.StatusOfOrder;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,7 +27,11 @@ public class Order {
     @Column(name = "total_money", nullable = false)
     private double totalMoney;
 
+    @Column(name = "status", nullable = false)
+    private StatusOfOrder status;
+
     @Column(name = "date_of_creation")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfCreation;
 
     @OneToMany(mappedBy = "order")

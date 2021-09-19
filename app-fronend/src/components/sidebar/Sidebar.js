@@ -40,7 +40,7 @@ const Sidebar = () => {
     }
 
     const renderOrdersLink = () => {
-        if (isLoggedIn && isAdmin()) {
+        if (isLoggedIn) {
 
             return (<React.Fragment>
                 <SidebarLink icon={faEnvelope} title={`Orders`} to={`/orders`}/>
