@@ -1,6 +1,9 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import api from "../../apis/api";
+import api, {getHeader} from "../../apis/api";
+import {useDispatch} from "react-redux";
+import {addToShoppingCart} from "../../actions";
+import {toast} from "react-toastify";
 
 const CustomerPanel = (props) => {
 
@@ -9,10 +12,14 @@ const CustomerPanel = (props) => {
             quantity: 1
         }
     });
+    const dispatch = useDispatch();
 
     const submit = (data) => {
-        api.post('/order/add', null).then(response => {
-            console.log(response);
+        dispatch(addToShoppingCart({
+            quantity: data.quantity,
+            id: props.book.bookId
+        })).then(() => {
+            toast.success("Book added to cart!");
         })
     }
 

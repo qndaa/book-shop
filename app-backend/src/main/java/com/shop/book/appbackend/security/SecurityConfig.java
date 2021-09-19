@@ -3,6 +3,7 @@ package com.shop.book.appbackend.security;
 import com.shop.book.appbackend.filter.CustomAuthenticationFilter;
 import com.shop.book.appbackend.filter.CustomAuthorizationFilter;
 import com.shop.book.appbackend.service.CustomerService;
+import com.shop.book.appbackend.service.ShoppingCartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final CustomerService customerService;
+    private final ShoppingCartService shoppingCartService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(), customerService);
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(), customerService, shoppingCartService);
         customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
         http = http.cors().and().csrf().disable();

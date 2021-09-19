@@ -1,15 +1,16 @@
 import {
+    ADD_TO_SHOPPING_CART,
     APPROVE_COMMENT,
     BLOCK_CUSTOMER,
     CHANGE_PROFILE_PASSWORD,
     CHANGE_PROFILE_PHOTO, CREATE_AUTHOR, CREATE_BOOK,
-    CREATE_CATEGORY, CREATE_COMMENT, CREATE_LANGUAGE, CREATE_MARK, DECLINE_COMMENT,
+    CREATE_CATEGORY, CREATE_COMMENT, CREATE_LANGUAGE, CREATE_MARK, DECLINE_COMMENT, DELETE_FROM_SHOPPING_CART,
     FETCH_ALL_BOOKS,
-    FETCH_AUTHORS, FETCH_BOOK,
+    FETCH_AUTHORS, FETCH_BOOK, FETCH_BOOK_BY_CATEGORY,
     FETCH_CATEGORY, FETCH_CUSTOMERS, FETCH_LANGUAGE,
-    FETCH_LOGGED_USER,
+    FETCH_LOGGED_USER, FETCH_SHOPPING_CART,
     LOGIN,
-    LOGOUT, UNBLOCK_CUSTOMER, UPDATE_ADMINISTRATOR, UPDATE_BOOK, UPDATE_CUSTOMER, UPDATE_LANGUAGE
+    LOGOUT, UNBLOCK_CUSTOMER, UPDATE_ADMINISTRATOR, UPDATE_BOOK, UPDATE_CUSTOMER, UPDATE_LANGUAGE, UPDATE_SHOPPING_CART
 } from "./types";
 import api, {getHeader} from "../apis/api";
 
@@ -45,6 +46,32 @@ export const fetchAllBooks = () => async (dispatch) => {
         const res = await api.get('/book', {headers: getHeader()});
         dispatch({
             type: FETCH_ALL_BOOKS,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const fetchBookByCategory = (id) => async (dispatch) => {
+    try {
+        const res = await api.get(`/book/category/${id}`, {headers: getHeader()});
+        dispatch({
+            type: FETCH_BOOK_BY_CATEGORY,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const fetchShoppingCart = () => async (dispatch) => {
+    try {
+        const res = await api.get(`/shoppingCart`, {headers: getHeader()});
+        dispatch({
+            type: FETCH_SHOPPING_CART,
             payload: res.data
         });
         return Promise.resolve(res.data);
@@ -337,6 +364,45 @@ export const declineComment = id => async (dispatch) => {
         const res = await api.post(`/comment/decline/${id}`, null,{headers: getHeader()});
         dispatch({
             type: DECLINE_COMMENT,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const addToShoppingCart = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/shoppingCart`, data,{headers: getHeader()});
+        dispatch({
+            type: ADD_TO_SHOPPING_CART,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const updateShoppingCart = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/shoppingCart/update`, data,{headers: getHeader()});
+        dispatch({
+            type: UPDATE_SHOPPING_CART,
+            payload: res.data
+        });
+        return Promise.resolve(res.data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export const deleteFromShoppingCart = data => async (dispatch) => {
+    try {
+        const res = await api.post(`/shoppingCart/delete`, data,{headers: getHeader()});
+        dispatch({
+            type: DELETE_FROM_SHOPPING_CART,
             payload: res.data
         });
         return Promise.resolve(res.data);

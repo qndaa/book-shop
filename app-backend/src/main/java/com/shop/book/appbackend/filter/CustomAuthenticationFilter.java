@@ -7,6 +7,7 @@ import com.shop.book.appbackend.dto.LoginInfoDTO;
 import com.shop.book.appbackend.dto.LoginParamsDTO;
 import com.shop.book.appbackend.model.Customer;
 import com.shop.book.appbackend.service.CustomerService;
+import com.shop.book.appbackend.service.ShoppingCartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -32,11 +33,13 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
     private final AuthenticationManager authenticationManager;
     private final CustomerService customerService;
+    private final ShoppingCartService shoppingCartService;
 
 
-    public CustomAuthenticationFilter(AuthenticationManager authenticationManager, CustomerService customerService) {
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager, CustomerService customerService, ShoppingCartService shoppingCartService) {
         this.authenticationManager = authenticationManager;
         this.customerService = customerService;
+        this.shoppingCartService = shoppingCartService;
 
     }
 
@@ -57,7 +60,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
         String access_token = JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 3000))
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
@@ -72,7 +75,9 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         } else {
             tokens.put("blocked", "flase");
+            shoppingCartService.createShoppingCart(user.getUsername());
         }
+
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(200);

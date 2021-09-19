@@ -1,4 +1,11 @@
-import {CREATE_BOOK, CREATE_COMMENT, CREATE_MARK, FETCH_ALL_BOOKS, UPDATE_BOOK} from "../actions/types";
+import {
+    CREATE_BOOK,
+    CREATE_COMMENT,
+    CREATE_MARK,
+    FETCH_ALL_BOOKS,
+    FETCH_BOOK_BY_CATEGORY,
+    UPDATE_BOOK
+} from "../actions/types";
 import _ from "lodash";
 
 
@@ -6,6 +13,8 @@ export default (state = {}, action) => {
     switch (action.type) {
         case FETCH_ALL_BOOKS:
             return {...state, ..._.mapKeys(action.payload, 'bookId') };
+        case FETCH_BOOK_BY_CATEGORY:
+            return _.mapKeys(action.payload, 'bookId');
         case CREATE_BOOK:
             return {...state, [action.payload.bookId]: action.payload};
         case UPDATE_BOOK:

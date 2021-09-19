@@ -57,4 +57,9 @@ public class BookController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/category/{id}")
+    public ResponseEntity<List<Book>> getBooksByCategory(@PathVariable UUID id) {
+        return new ResponseEntity<>(bookService.getBooksByCategory(id), HttpStatus.OK);
+    }
+
 }

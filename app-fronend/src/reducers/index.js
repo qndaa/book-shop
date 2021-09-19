@@ -6,6 +6,7 @@ import categories from "./categories";
 import languages from "./languages";
 import select from "./select";
 import customers from "./customers";
+import shoppingCart from "./shoppingCart";
 
 export default combineReducers({
     user,
@@ -14,5 +15,7 @@ export default combineReducers({
     categories: categories,
     languages: languages,
     select: select,
-    customers: customers
+    customers: customers,
+    shoppingCart: shoppingCart,
+
 });

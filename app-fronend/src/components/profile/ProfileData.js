@@ -54,11 +54,11 @@ const ProfileData = (props) => {
     }
 
     return (
-        <div className="col-xl-4 col-md-5 mb-4">
+        <div className="col-xl-12 col-md-5 mb-4">
             <div className="card border-left-primary shadow h-100 py-2">
                 <div className="card-body d-flex justify-content-center">
-                    <div className="row ">
-                        <div className="col mr-2 ">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col  mr-2 ">
                             <div className={`d-flex justify-content-center`}>
                                 {renderImage(props.profile.image)}
                             </div>

@@ -30,6 +30,9 @@ public class OrderLine {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Column(name = "price", nullable = false)
+    private Double price;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", nullable = false)

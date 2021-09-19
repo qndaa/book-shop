@@ -19,6 +19,7 @@ import PanelPage from "./panel/PanelPage";
 import ShoppingCardPage from "./card/ShoppingCardPage";
 import OrdersPage from "./orders/OrdersPage";
 import CustomerPage from "./customers/CustomerPage";
+import BookByCategory from "./books/BookByCategory";
 
 
 
@@ -34,6 +35,7 @@ const App = () => {
                             <Switch>
                                 <Route path={`/`} exact component={BooksPage}/>
                                 <Route path={`/home`} exact component={BooksPage}/>
+                                <Route path={`/home/categories/:id`} exact component={BookByCategory} />
                                 <Route path={`/login`} exact component={LoginPage}/>
                                 <Route path={'/registration'} exact component={RegistrationPage}/>
                                 <Route path={'/shoppingCard'} exact component={ShoppingCardPage} />

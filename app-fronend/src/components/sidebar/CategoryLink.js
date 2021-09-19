@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const CategoryLink = ({name, to, num}) => {
     return (
         <li className="nav-item my-0">
-            <Link className="nav-link collapsed" to={`/categories/${to}`}
+            <Link className="nav-link collapsed" to={`/home/categories/${to}`}
                aria-expanded="true" aria-controls="collapseTwo">
                 <div className={`row`}>
                     <div className={`col-10`}><span>{name}</span></div>

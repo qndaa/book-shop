@@ -61,4 +61,9 @@ public class BookServiceImplementation implements BookService {
         book.setPrice(updateBookDTO.getPrice());
         return bookRepository.save(book);
     }
+
+    @Override
+    public List<Book> getBooksByCategory(UUID id) {
+        return bookRepository.getBooksByCategoriesContains(categoryRepository.findById(id).get());
+    }
 }

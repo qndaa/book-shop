@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchLoggedUser, logout} from "../../actions";
+import {fetchLoggedUser, fetchShoppingCart, logout} from "../../actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
@@ -15,12 +15,14 @@ const ProfileOptions = () => {
     const dispatch = useDispatch();
     const [showDropdownUser, setShowDropdownUser] = useState(false);
     const profile = useSelector(state => state.user.profile);
+    const shoppingCart = useSelector(state => state.shoppingCart);
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
 
     useEffect(() => {
         if(loggedIn() && isLoggedIn) {
             dispatch(fetchLoggedUser(getProfile().sub));
+            dispatch(fetchShoppingCart());
         }
     }, []);
 
@@ -80,7 +82,7 @@ const ProfileOptions = () => {
                 <Link to={`/shoppingCard`} className="nav-link dropdown-toggle"  id="messagesDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <FontAwesomeIcon icon={faShoppingCart} size={`1x`} />
-                    <span className="badge badge-danger badge-counter">7</span>
+                    <span className="badge badge-danger badge-counter">{(shoppingCart !== undefined) ? Object.values(shoppingCart).length : 0}</span>
                 </Link>
             </li>
 

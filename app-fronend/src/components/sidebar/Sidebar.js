@@ -92,7 +92,7 @@ const Sidebar = () => {
             {renderUsersLink()}
             <SidebarLink icon={faUser} title={`Authors`} to={`/authors`}/>
             <hr className="sidebar-divider my-0"/>
-            <SidebarLink icon={faBook} title={`Categories`} to={`/categories`}/>
+            {/*<SidebarLink icon={faBook} title={`Categories`} to={`/categories`}/>*/}
 
             {renderCategoryLinks()}
 

@@ -26,7 +26,7 @@ const Book = (props) => {
                     <div className="card-body">
                         <div className="row no-gutters align-items-center">
                             <div className="col mr-2">
-                                <div style={{ height: 300}}>
+                                <div style={{ height: 320}}>
                                     {renderImage(props.book.image)}
                                 </div>
                                 <div style={{height: 50}} className="d-flex justify-content-center text-xl font-weight-bold text-primary text-uppercase mb-1">

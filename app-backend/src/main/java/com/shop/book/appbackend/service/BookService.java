@@ -15,4 +15,6 @@ public interface BookService {
     Book create(BookCreateDTO bookDTO);
 
     Book update(UpdateBookDTO updateBookDTO);
+
+    List<Book> getBooksByCategory(UUID id);
 }
