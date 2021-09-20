@@ -7,6 +7,7 @@ import {getProfile, isAdmin, isCustomer, loggedIn, URL_BACKEND} from "../../apis
 import {approveOrder, cancelOrder, declineOrder, fetchOrders, fetchOrdersByCustomer, logout} from "../../actions";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
+import ReportFrom from "./ReportFrom";
 
 
 const OrdersPage = () => {
@@ -54,20 +55,7 @@ const OrdersPage = () => {
 
     const renderReport = () => {
         if (isAdmin()) {
-            return (
-                <React.Fragment>
-                    <div className={`col-7`}></div>
-                    <div className={`col-4 d-flex justify-content-end border rounded-3 gray p-3`}>
-                        <input className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-3 mr-3"
-                               type={`date`}/>
-                        <input className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-3 mr-3"
-                               type={`date`}/>
-                        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-3 mr-3"><i
-                            className="fas fa-download fa-sm text-white-50"/> Generate Report</a>
-                    </div>
-                </React.Fragment>
-
-            );
+            return (<ReportFrom />);
         }
     }
     const renderImage = (fileName) => {
@@ -180,10 +168,7 @@ const OrdersPage = () => {
                                             {renderDecline(order)}
                                         </div>
 
-
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
