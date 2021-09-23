@@ -33,7 +33,6 @@ const ReportFrom = () => {
             }
         });
         setCsvData(arr);
-        console.log(csvData);
         csvLink.current.link.click();
 
     }

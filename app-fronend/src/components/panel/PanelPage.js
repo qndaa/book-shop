@@ -20,7 +20,7 @@ const PanelPage = () => {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-xl-4 col-md-5 mb-4">
+                    <div className="col-xl-6 col-md-5 mb-4">
                         <div className="card border-left-primary shadow h-100 py-2">
                             <div className="card-body d-flex justify-content-center">
                                 <div className="row ">
@@ -32,7 +32,7 @@ const PanelPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-8 col-md-5 mb-4">
+                    <div className="col-xl-6 col-md-5 mb-4">
                         <div className="card border-left-primary shadow h-100 py-2">
                             <div className="card-body d-flex justify-content-center">
                                 <div className="row ">

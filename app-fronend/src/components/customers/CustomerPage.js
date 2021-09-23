@@ -18,7 +18,7 @@ const CustomerPage = () => {
         if (fileName !== null) {
             resource = URL_BACKEND + '/file/' + fileName;
         }
-        return (<img className="img-fluid " src={resource} style={{ height : 260, width : 200}}  alt={`Customer!`}/>);
+        return (<img className="img-fluid " src={resource} style={{ height : 200, width : 200}}  alt={`Customer!`}/>);
     }
 
 
@@ -78,7 +78,7 @@ const CustomerPage = () => {
         return (
             <div className="container-fluid">
                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 className="h2 mb-0 text-gray-800">Books</h1>
+                    <h1 className="h2 mb-0 text-gray-800">Customers:</h1>
                 </div>
                 <div className="row">
                     {renderCustomers()}

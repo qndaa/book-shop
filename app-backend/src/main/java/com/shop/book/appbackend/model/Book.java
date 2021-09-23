@@ -45,7 +45,7 @@ public class Book {
     @Column(name = "image", unique = true)
     private String image;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 4000)
     private String description;
 
     @ManyToMany

@@ -20,7 +20,7 @@ const NewAuthorForm = () => {
         } else {
             let resource = URL_BACKEND + '/file/' + newImage;
             return (
-                <img style={{height: 200, width: 200}} className="img-profile rounded-circle"
+                <img style={{height: 260, width: 200}} className="img-profile"
                      src={resource}/>
             );
         }

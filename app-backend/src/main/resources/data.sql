@@ -1,132 +1,255 @@
+--
+-- PostgreSQL database dump
+--
 
-insert into roles(role_id, name) values ('cb190efc-3c4b-45fc-8307-82039415b61d', 'ROLE_CUSTOMER');
-insert into roles(role_id, name) values ('1358136f-d0aa-4361-90c0-b7e38a664bdc', 'ROLE_ADMINISTRATOR');
+-- Dumped from database version 13.4 (Ubuntu 13.4-1.pgdg20.04+1)
+-- Dumped by pg_dump version 13.4 (Ubuntu 13.4-1.pgdg20.04+1)
 
+-- Started on 2021-09-23 02:45:20 CEST
 
+--
+-- TOC entry 3140 (class 0 OID 177432)
+-- Dependencies: 215
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
 
-
-
-insert into languages(language_id, name) values ('ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 'Srpski');
-insert into languages(language_id, name) values ('d5b9ec3c-99e8-4d97-84d9-3a3ef0b18354', 'Engleski');
-insert into languages(language_id, name) values ('86a77937-5e64-4543-9222-c1eabf91b1e1', 'Hrvatski');
-insert into languages(language_id, name) values ('14db1467-24b3-4ef5-9d19-77de725e7193', 'Spanski');
-
-
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values (
-                                                                                     '2d3e1642-2714-48cb-8f1a-8b10abaf0651',
-                                                                                     'Semper idem', '978-86-521-2315-5',
-                                                                                     10.5, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a',
-                                                                                     10,
-                                                                                     '3c0a3d7b-31dd-479a-9adc-f4a7c0b483a5.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('5b7f6e56-d309-45ee-8db7-7c799c43f7ab', 'U poteri za svetlom', '978-86-521-4098-5', 15, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10, '9e2f8d43-6841-4be8-9ed8-a2dca5f19e4f.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('4b453706-6706-4959-ad76-2be916f7611b', 'Ordesa', '978-86-521-4092-3', 12, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10, '411e6eef-a463-4a8a-847a-528cc1935e31.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'Komplet – Digitalna revolucija ', null, 22, 'd5b9ec3c-99e8-4d97-84d9-3a3ef0b18354', 10, 'faa24a29-f195-491a-8583-37ae6844576a.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'Diva: Marija Kalas', '978-86-521-4066-4', 20, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 5, 'bbbac20a-7bee-4a21-9e59-bc08567ebbf2.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('9c40e032-1200-43a5-a9a6-8db53ff2af85', 'Lanjski snegovi', '978-86-521-4206-4', 20, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10, 'ed8e792b-1315-4619-bcea-f29d4a0d7f19.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('17dcca1b-3f4d-4eba-9e7e-e0926d599035', 'Život pre čoveka', '978-86-521-4185-2', 25, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10, 'c81227de-be7e-4232-8bfe-3d784f53c98b.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('84b15913-6024-4e68-b1c4-23bc37bca229', 'Sarajka u Beogradu i druge drame', '978-86-521-3985-9', 25, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a', 10, '8690cae3-f23d-43b5-8e2d-96c0ac34382c.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('f95e4e7e-fc2d-4273-ba90-a77a4cb092a0', 'Njegova devojka zauvek', '978-86-521-4248-4', 10, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a' , 15, '04505bc7-668c-45cd-8d69-60124cec4c1a.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('1d3612be-5378-4415-a82b-db81660638e7', 'Una', '978-86-521-4017-6', 29, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a' , 15, 'b0429c6c-3b30-407b-a667-65b26614c1ae.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('1c7dce3b-f00b-4d8d-86af-8042843e1c70', 'Ada', '978-86-521-3940-8', 20, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a' , 20, '76aa549a-732b-4643-8777-90607c269741.jpg');
-insert into books(book_id, title, isbn, price, language_id, quantity, image) values ('5b93b744-9c25-441f-8dca-15564bb3e0ec', 'Gospođica Koko i miris ljubavi', '978-86-521-3312-3', 12, 'ba3a5032-e5f1-43f2-82a6-ef0a892f170a' , 20, '5e61f023-43c7-4129-8de2-72f5e67658c9.jpg');
-
-insert into categories(category_id, name) values ('09bcaf7d-99e1-4448-bdcb-a5eb5d5df0b4', 'Biografija');
-insert into categories(category_id, name) values ('dc26f7c3-6d26-48a4-b73d-4880c3cc9d78', 'Drama');
-insert into categories(category_id, name) values ('03779195-a803-4fbe-ba60-38aff19828e5', 'Horor');
-insert into categories(category_id, name) values ('15bab8d1-2889-4e6a-b9ef-4b97b356fe5e', 'E-knjige');
-insert into categories(category_id, name) values ('54a8b1f0-99bb-4f29-8b09-63b4a37e35a6', 'Racunari i programiranje ');
-insert into categories(category_id, name) values ('d28ee796-b5e7-4734-a3e7-1ee3246b477b', 'Internet svijet');
-insert into categories(category_id, name) values ('88ba265a-f277-4827-9e2d-32633473f099', 'Popularna nauka');
-insert into categories(category_id, name) values ('5351e599-ca61-4e55-b78b-cc80a9a9b2e6', 'Ljubavni');
-insert into categories(category_id, name) values ('72f7ad84-7863-4f0a-ad49-9534ef6ea0df', 'Price');
+INSERT INTO public.users VALUES ('e194ba33-c08c-4839-ae38-05b1904407d2', 'Djordjije', '98a10ea8-5462-435a-a283-6eb66e528cef.jpg', 'Kundacina', '$2a$10$SGYrV025vt8LCppdh/VzVeZIXeFbDr5cBFyuMxCOD.I15p8CzbRie', 0, 'djordjije');
+INSERT INTO public.users VALUES ('6b217f25-2b45-4d60-8063-bf56fa3b40a1', 'Andjela', '516d2e03-33dd-4f72-b1ae-7a1c05eaeed8.jpeg', 'Andjelkovic', '$2a$10$DESR8C2elCVj8tcpWmzEU./MmgwDhl1jVIUXAR6ZlsWLUzza8gaI6', 1, 'andjela');
 
 
-insert into books_categories (book_id, category_id) values  ('2d3e1642-2714-48cb-8f1a-8b10abaf0651', '09bcaf7d-99e1-4448-bdcb-a5eb5d5df0b4');
-insert into books_categories (book_id, category_id) values  ('2d3e1642-2714-48cb-8f1a-8b10abaf0651', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', '54a8b1f0-99bb-4f29-8b09-63b4a37e35a6');
-insert into books_categories (book_id, category_id) values  ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'd28ee796-b5e7-4734-a3e7-1ee3246b477b');
-insert into books_categories (book_id, category_id) values  ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', '88ba265a-f277-4827-9e2d-32633473f099');
-insert into books_categories (book_id, category_id) values  ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'dc26f7c3-6d26-48a4-b73d-4880c3cc9d78');
-insert into books_categories (book_id, category_id) values  ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', '5351e599-ca61-4e55-b78b-cc80a9a9b2e6');
-insert into books_categories (book_id, category_id) values  ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', '09bcaf7d-99e1-4448-bdcb-a5eb5d5df0b4');
-insert into books_categories (book_id, category_id) values  ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('9c40e032-1200-43a5-a9a6-8db53ff2af85', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('9c40e032-1200-43a5-a9a6-8db53ff2af85', '72f7ad84-7863-4f0a-ad49-9534ef6ea0df');
-insert into books_categories (book_id, category_id) values  ('17dcca1b-3f4d-4eba-9e7e-e0926d599035', 'dc26f7c3-6d26-48a4-b73d-4880c3cc9d78');
-insert into books_categories (book_id, category_id) values  ('17dcca1b-3f4d-4eba-9e7e-e0926d599035', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('84b15913-6024-4e68-b1c4-23bc37bca229', 'dc26f7c3-6d26-48a4-b73d-4880c3cc9d78');
-insert into books_categories (book_id, category_id) values  ('84b15913-6024-4e68-b1c4-23bc37bca229', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('1d3612be-5378-4415-a82b-db81660638e7', 'dc26f7c3-6d26-48a4-b73d-4880c3cc9d78');
-insert into books_categories (book_id, category_id) values  ('1d3612be-5378-4415-a82b-db81660638e7', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
-insert into books_categories (book_id, category_id) values  ('1d3612be-5378-4415-a82b-db81660638e7', '5351e599-ca61-4e55-b78b-cc80a9a9b2e6');
-insert into books_categories (book_id, category_id) values  ('1c7dce3b-f00b-4d8d-86af-8042843e1c70', 'd28ee796-b5e7-4734-a3e7-1ee3246b477b');
-insert into books_categories (book_id, category_id) values  ('1c7dce3b-f00b-4d8d-86af-8042843e1c70', '15bab8d1-2889-4e6a-b9ef-4b97b356fe5e');
+--
+-- TOC entry 3125 (class 0 OID 177348)
+-- Dependencies: 200
+-- Data for Name: administrators; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.administrators VALUES ('e194ba33-c08c-4839-ae38-05b1904407d2');
 
 
+--
+-- TOC entry 3126 (class 0 OID 177353)
+-- Dependencies: 201
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.authors VALUES ('1c1c2808-cb6c-4223-b3aa-8ec5c4c13951', 'Momo Kapor rođen je 1937. godine u Sarajevu kao jedino dete Bojane Kapor (devojačko Velimirović) i Gojka Kapora.
+
+Bilo je predviđeno da se rodim, kao i ostali slikari, u Firenci, ali roda koja me je nosila 8. aprila 1937. godine imala je prinudno sletanje u grad Sarajevo zbog guste magle koja tamo uvek vlada. Tako je ime tog lepog i nesrećnog grada zauvek upisano u sve moje dokumente. Ma kuda da krenem ne mogu pobeći od njega.
+
+Jedan tragičan događaj zauvek je obeležio rane godine, ali i čitav život Mome Kapora. Za veme nemačkog bombardovanja Sarajeva, 13. aprila 1941. godine, na kuću u koju su se skonili Momina majka, baka i još četrdesetak ljudi pala je bomba, a četvorogodišnji Momo je jedini preživeo zahvaljujući tome što ga je majka pokrila sopstvenim telom, ostavši na mestu mrtva.
+
+Tako je na samom početku života Momčilo ostao bez dvadesetosmogodišnje majke, ali i bez oca, koji je zarobljen na početku rata kao rezervni oficir kraljevske vojske i interniran u logor u Nirnbergu, odakle će izaći tek nakon kapitulacije Nemačke.
+
+Svoje najranije detinjstvo provodi u Sarajevu, kod bakine sestre Janje Baroš, a u Beograd prelazi godinu dana po završetku rata, sa svojim ocem.
+
+U septembru 1955. godine upisuje se na Akademiju likovnih umetnosti u Beogradu, gde diplomira 1961. godine, u klasi profesora Nedeljka Gvozdenovića.
+
+Momo Kapor, još kao gimnazijalac Treće beogradske gimnazije a zatim i kao student, počinje saradnju sa nekoliko časopisa u kojima objavljuje likovne kritike. Nešto kasnije počinje da piše putopise, feljtone i priče koje objavljuje u Vidicima, Politici, Oslobođenju, Ninu, Mladosti i Književnim novinama. Tada nastaju i njegove prve radio drame koje šalje na konkurse, često pod pseudonimom.
+
+U vreme završetka Akademije, 1961. godine upoznaje Anu Pjerotić, kćerku uglednog lekara Ante Pjerotića, sa kojom se venčava posle nekoliko godina, 1964. godine. U ovom braku rođene su kćerke Ana i Jelena.
+
+Nakon venčanja živeli smo u iznajmljenoj sobi na Crvenom krstu, a zatim u iznajmljenom stanu u Siminoj ulici. Kiriju za taj stan smo platili godinu dana unapred od nagrade koju je dobio za jednu od svojih radio-drama, baš u trenutku kad se rodila naša kćerka Ana. Ubrzo se zapošljava u Jugoslavija publiku, a ja nastavljam studije na Filozofskom fakultetu, gde sam 1966. diplomirala na katedri za psihologiju. Naš prvi pravi dom nalazio se u ulici Kraljevića Marka, gde se rodila naša mlađa kćerka Jelena. Nekoliko godina kasnije zamenili smo ga za prostraniji stan u Kondinoj ulici, u kojem smo zajedno živeli do Momine pedesete godine. Tu su nastale Beleške jedne Ane, Provincijalac, Foliranti, Zoe...
+
+U ženskom časopisu Bazar počinju da izlaze tekstovi o tinejdžerki Ani, ilustrovani rukom autora. Oni vrlo brzo nalaze put do publike i 1972. godine postaju knjiga Beleške jedne Ane.
+
+Tu sam iznosio mnogo opasnije stavove od onih koji su se mogli naći u disidentskoj literaturi. Tadašnji Politbiro bi ispao smešan da je napadao tinejdžerku sa kikicama (...) Tada sam sebe proglasio za lakog pisca čija su dela bila zgodna za čitanje pod haubama frizerskih salona, da bih se zaštitio od napada političkih oligarhija koje su se smenjivale na vlasti tokom mog života.
+
+U tom periodu počinje i saradnja Mome Kapora i izdavačke kuće Znanje, koja u okviru biblioteke HIT objavljuje prve Kaporove romane koji će mu doneti ogromnu popularnost. Njegove knjige su godinama bile na vrhu lista najčitanijih dela, a on je vrlo brzo postao miljenik publike. Zahvaljujući svojim autorskim emisijama na radiju i televiziji stekao je široku popularnost koja je u to vreme bila neuobičajena za književnike.
+
+1988. godine razvodi se od prve supruge da bi ubrzo nakon toga ušao u novi brak.
+
+Momo Kapor je autor preko četrdeset knjiga. Osim romana i priča pisao je drame, putopise, esejističku prozu i bavio se ilustracijom. Njegove knjige su prevedene na mnoge strane jezike
+Umro je 2010. godine u Beogradu.
+
+', 'Momo', 'b9c67c7b-46d5-4ce6-988d-15cb4789889e.jpg', 'Kapor', 1937, 2010);
+INSERT INTO public.authors VALUES ('0752d034-2327-4790-b16a-077c2d8d71aa', 'Džordž Martin je rođen 1948. u Nju Džerziju kao Džordž Rejmond Ričard Martin. Sklonost ka pisanju razvio je još kao dete, pišući priče o čudovištima i prodajući ih komšijskoj deci. Kasnije, u srednjoj školi, postao je ljubitelj stripa i predani kolekcionar, usmerivši svoje literarno delovanje na pisanje strip scenarija za različite opskurne fanzine. Prvi profesionalni ugovor sklopio je 1970, prodavši priču za strip Heroj.
+
+Godine 1971. diplomirao je žurnalistiku na univerzitetu Nortvestern. Nekoliko sledećih godina radio je u administraciji okruga Kuk, organizovao šahovske turnire i bio predavač na katedri za novinarstvo univerziteta Klark u Ajovi. Tokom sedamdesetih samo je povremeno pisao.
+
+Pošto se 1979. razveo, svu energiju usmerio je ka pisanju. Sve ostalo je legenda: za svoj literarni rad Džordž R. R. Martin dobio je sve važnije nagrade u žanru epske fantastike, nekoliko nagrada Nebula i Hugo.
+
+Godine 1986. seli se u Holivud, gde radi kao urednik serijala Zona sumraka, konsultant na scenariju za Lepoticu i zver, producent istog projekta, a na kraju i supervizor.
+
+Martin danas živi u Santa Feu u Novom Meksiku. Potpredsednik je Američkog udruženja SF pisaca.', 'Džordž', '46ca74ae-f5c8-4e02-b523-500a69abe01b.jpg', 'Martin', 1948, NULL);
 
 
+--
+-- TOC entry 3134 (class 0 OID 177402)
+-- Dependencies: 209
+-- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: postgres
+--
 
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography) values (
-                                                                                                        '114aa1cc-fbdd-476b-9667-c0c5553cbf0f',
-                                                                                                        'Marko',
-                                                                                                        'Vidojković',
-                                                                                                        1975,
-                                                                                                        null,
-                                                                                                        null);
-
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('b20fbdcd-4bae-455e-a564-1400507ed8bc', 'Kristof', 'Keze', 1964, null, null, '8caf056f-3276-4c41-9209-8448ceeb64a7.jpg');
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('f2d4c1be-3ef6-4f4f-9fe8-e1b6df661502', 'Džejmi', 'Bartlet', 1971, null, null, null);
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('cd80f545-f964-4d62-a335-72d77b0f5061', 'Misel', 'Marli', null, null, null, '2cd5da7f-6074-43f8-9212-ded77ed03a77.jpg');
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('c81227de-be7e-4232-8bfe-3d784f53c98b', 'Momo', 'Kapor', 1937, 2010, null, 'b4cfdc71-ad43-4e36-9107-f22ce01148a9.jpg');
-insert into authors (author_id, first_name, last_name, year_of_birth, year_of_death, biography, image) values ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'Bler', 'Holden', null, null, null, null);
---insert into author (author_id, first_name, last_name, date_of_birth, date_of_death) values ('a227f976-fdd0-4d10-a26e-cfbc0319aea9', '', '', '', '');
-
-insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'b20fbdcd-4bae-455e-a564-1400507ed8bc');
-insert into books_by_authors(book_id, author_id) values ('f986870f-bf90-4226-a0ce-d8ca71e11fa2', 'f2d4c1be-3ef6-4f4f-9fe8-e1b6df661502');
-insert into books_by_authors(book_id, author_id) values ('94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9', 'cd80f545-f964-4d62-a335-72d77b0f5061');
-insert into books_by_authors(book_id, author_id) values ('5b93b744-9c25-441f-8dca-15564bb3e0ec', 'cd80f545-f964-4d62-a335-72d77b0f5061');
-insert into books_by_authors(book_id, author_id) values ('1c7dce3b-f00b-4d8d-86af-8042843e1c70', 'c81227de-be7e-4232-8bfe-3d784f53c98b');
-insert into books_by_authors(book_id, author_id) values ('1d3612be-5378-4415-a82b-db81660638e7', 'c81227de-be7e-4232-8bfe-3d784f53c98b');
-insert into books_by_authors(book_id, author_id) values ('9c40e032-1200-43a5-a9a6-8db53ff2af85', 'c81227de-be7e-4232-8bfe-3d784f53c98b');
-insert into books_by_authors(book_id, author_id) values ('f95e4e7e-fc2d-4273-ba90-a77a4cb092a0', '94f630c5-9fcd-46b9-b19f-d2bafb0ad9d9');
+INSERT INTO public.languages VALUES ('924d1920-12ab-4569-ab4d-8a8307b42da8', 'Serbian');
+INSERT INTO public.languages VALUES ('cdba9d04-71a4-46e6-85d6-aa1eedd4bd5c', 'English');
 
 
+--
+-- TOC entry 3127 (class 0 OID 177361)
+-- Dependencies: 202
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.books VALUES ('78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', '„Možda zbog toga volim ovu knjigu. Ona me, više od bilo koje druge, podseća na tatu i na vreme koje smo proveli zajedno. Zato ove priče i moj kratak predgovor osećam kao nastavak naših razgovora, kao nevidljivu nit koja nas zauvek vezuje i na koju vreme ne utiče.“
+– iz predgovora Ane Kapor
+
+Lanjski snegovi (1977) potvrđuju Momu Kapora kao vrsnog pripovedača urbane orijentacije koji nas – s pomalo nostalgije i ironije, ali i s puno topline – uvodi u jedan svet koji polako nestaje. Ova knjiga sadrži neke od najlepših Kaporovih priča, koje ga, bez sumnje, svrstavaju u red autora čije vreme nikada ne prolazi.', 'd1e5fcc2-d153-4e17-afaa-d949887b0781.jpg', '978-86-521-4206-4', 20, 10, 'Lanjski snegovi', '924d1920-12ab-4569-ab4d-8a8307b42da8');
+INSERT INTO public.books VALUES ('8a6b2e2a-058a-4c9b-b843-efcbbeb751a0', 'Posebno, raskošno ilustrovano izdanje druge knjige Pesma leda i vatre sa predgovorom Bernarda Kornvela za fanove čuvenog književnog serijala i HBO-ove serije Igra prestola.
+
+Kao da se samo vreme iščašilo. Leto spokoja i obilja, dugo deset godina, bliži se kraju, a surova, ledena zima prikrada se kao gladna zver. Dva velika čoveka – lord Edard Stark i kralj Robert Barateon – koji su vladali u tokom dugog doba mira, sada su mrtvi, žrtve izdajstva u kraljevskom domu. Sada, od drevne citadele Zmajkamen do surovog severa oko Zimovrela, vlada metež, pošto pretendenti na gvozdeni presto Sedam kraljevstava pokušavaju da ga zauzmu ratom, prevarom ili magijom.
+
+Dok nebo preseca kometa boje krvi i plamena – kometa koja najavljuje propast – šest strana se bore za prevlast u zavađenoj zemlji. Edardov sin Rob proglasio se za kralja na Severu. Na jugu, prestolonaslednik Džofri je vladar samo po imenu, okružen spletkama dvorana u Kraljevoj luci. Dva Robertova brata takođe žele vlast, ali i oni bez prava na tron spremaju se u osvajački pohod. A na dalekom kontinentu, prognana kraljica, majka zmajeva, stavlja sve na kocku i vodi svoje dragocene štićenike preko nemilosrdne pustinje da osvoji krunu koja joj po pravu pripada.
+
+U svetu kojim vladaju bratoubistvo i rodoskvrnuće, alhemija i izdajstvo, cena slave meri se krvlju, a pobednički plen će završiti u rukama ljudi sa najhladnijim čelikom i najhladnijim srcem. Jer kada se kraljevi sudare, čitavo kraljevstvo se ruši.', 'd9efdebb-533f-44e4-b796-9aca57926538.jpg', '978-86-521-4287-3', 29, 19, 'Sudar kraljeva - ilustorvano izdanje', 'cdba9d04-71a4-46e6-85d6-aa1eedd4bd5c');
+INSERT INTO public.books VALUES ('0fc7a533-3eef-460f-af6d-c36f546bbb0c', 'ROMAN DO SADA NEVIÐENE SNAGE MAŠTE IZ PERA NAJVEĆEG MAJSTORA ŽANRA
+
+U „Igri prestola“, Džordž R. R. Martin je stvorio istinsko remek-delo, objedinivši sve ono najbolje što žanr epske fantastike može da pruži. Magija, spletke, romanse i pustolovine ispunjavaju stranice prvog toma ovog epskog serijala, koji će zasigurno oduševiti ne samo ljubitelje žanra, već i mnogo širi krug čitalaca.
+
+Nad zemljom u kojoj leta mogu trajati decenijama, a zime pokolenjima, nadvili su se crni oblaci. Ledeni vetrovi ponovo duvaju i u snežnim bespućima severno od Zimovrela, mračne i natprirodne sile okupljaju se iza velikog zida koji štiti kraljevstvo. U središtu sukoba nalazi se porodica Stark od Zimovrela, ljudi nepopustljivih i tvrdih kao što je i zemlja kojom vladaju. Prostirući se od predela okovanih surovom hladnoćom do dalekog letnjeg kraljevstva obilja i raskoši, ovo je priča o vitezovima i damama, vojnicima i čarobnjacima, plaćenim ubicama i kopiladima, ljudima koji žive u vremenu zlih predskazanja. Kroz mnoge zavere i spletke, tragedije i izdajstva, bitke i opsade, rešava se sudbina porodice Stark, njihovih saveznika i neprijatelja, dok svi oni pokušavaju da pobede u toj najsmrtonosnijoj od svih igara: igri prestola.', '28397a28-cdd6-42de-89c1-483f8b650de0.jpg', NULL, 25, 18, 'Igra prestola', 'cdba9d04-71a4-46e6-85d6-aa1eedd4bd5c');
+INSERT INTO public.books VALUES ('4b2db714-5e56-4501-ae7e-fc6024c106b8', '
+Tri stotine godina pre Igre prestola Vesterosom su vladali zmajevi.
+
+Ilustrovao Dag Vitli.
+
+U ovom maestralnom delu autora Pesme leda i vatre, koja je poslužila kao inspiracija za televizijsku seriju kanala HBO Igra prestola, oživela je uzbudljiva istorija Targarjena.
+
+Nekoliko vekova pre događaja koji se odigravaju u Igri prestola kuća Targarjena – jedina porodica zmajskih gospodara koja je preživela Propast Valirije – naselila se na Zmajkamenu. Vatra i krv započinje od legendarnog Egona Osvajača, koji je skovao Gvozdeni presto, a nastavlja se pripovedajući o pokolenjima Targarjena koji su se borili da održe tu znamenitu vladarsku stolicu – sve do izbijanja građanskog rata koji umalo nije zatro celu dinastiju.
+
+Šta se zaista dešavalo za vreme Plesa zmajeva? Zašto je svaki odlazak u Valiriju posle Propasti smrtonosan? Šta su najgori zločini koje je počinio Megor Okrutni? Kakav je bio život u Vesterosu dok su zmajevi šestarili nebom? Ovo su samo neka od svih pitanja na koja su dati odgovori u ovom važnom letopisu napisanom rukom učenog meštra iz Citadele, ilustrovanom s više od osamdeset crno-belih crteža Daga Vitlija. Čitaoci su imali prilike da već okuse ponešto od ovog štiva u Svetu leda i vatre, ali sada je ovde prvi put razmotana čitava bogata tapiserija povesti Targarjena.
+
+Vatra i krv poseduje svu obuhvatnost i veličanstvenost Gibonovog Opadanja i propasti Rimskog carstva, a predstavlja prvi deo dvotomne povesti dinastije Targarjena, pružajući čitaocu sasvim novu sliku dinamične, često krvave, uvek opčinjavajuće prošlosti Vesterosa.
+
+„U Vatri i krvi Martin nije postavljao sebi ograničenja... i nemoguće je knjigu ispustiti iz ruku... Postoji izvesna opojnost u ovoj prozi koja ima i neskrivenih tračerskih osobina... Nameće se očigledno poređenje sa Silmarilionom Dž. R. R. Tolkina... Meštar Gildejn piše nekoliko vekova posle događaja koje obrađuje i njegov pripovedački glas dodatno zapliće priču sukobljenim perspektivama i bujicom spornih činjenica.“ Entertainment Weekly
+
+„Raskošna i mračna saga, sadrži u izobilju oba elementa iz naslova... Teško je ostati hladne krvi čitajući opise nebeskih borbi koje vode zmajevi i nedoumica poraženih vladara kojima se nudi da kleknu, obuku crno i pristupe Noćnoj straži ili prihvate maštovito užasan kraj.“ Guardian
+', 'e560dd19-eaf6-41a8-9c82-45dbc811e935.jpg', '978-86-521-3321-5', 32, 20, 'Vatra i krv', 'cdba9d04-71a4-46e6-85d6-aa1eedd4bd5c');
 
 
+--
+-- TOC entry 3128 (class 0 OID 177369)
+-- Dependencies: 203
+-- Data for Name: books_by_authors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.books_by_authors VALUES ('78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', '1c1c2808-cb6c-4223-b3aa-8ec5c4c13951');
+INSERT INTO public.books_by_authors VALUES ('0fc7a533-3eef-460f-af6d-c36f546bbb0c', '0752d034-2327-4790-b16a-077c2d8d71aa');
+INSERT INTO public.books_by_authors VALUES ('8a6b2e2a-058a-4c9b-b843-efcbbeb751a0', '0752d034-2327-4790-b16a-077c2d8d71aa');
+INSERT INTO public.books_by_authors VALUES ('4b2db714-5e56-4501-ae7e-fc6024c106b8', '0752d034-2327-4790-b16a-077c2d8d71aa');
 
 
+--
+-- TOC entry 3130 (class 0 OID 177379)
+-- Dependencies: 205
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.categories VALUES ('b3d9b190-02dc-4a6c-8fe7-051638e31ece', 'Narrative');
+INSERT INTO public.categories VALUES ('825346c8-a16d-4ff4-afd9-e8b799d2f272', 'E-books');
+INSERT INTO public.categories VALUES ('9e88c010-6034-4103-b651-a833bb6b1e18', 'Epic fantasy');
+INSERT INTO public.categories VALUES ('7d3e4bd5-bbca-47a6-bc63-68517e097868', 'Filmed books');
 
 
+--
+-- TOC entry 3129 (class 0 OID 177374)
+-- Dependencies: 204
+-- Data for Name: books_categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.books_categories VALUES ('78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', '825346c8-a16d-4ff4-afd9-e8b799d2f272');
+INSERT INTO public.books_categories VALUES ('78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', 'b3d9b190-02dc-4a6c-8fe7-051638e31ece');
+INSERT INTO public.books_categories VALUES ('0fc7a533-3eef-460f-af6d-c36f546bbb0c', '7d3e4bd5-bbca-47a6-bc63-68517e097868');
+INSERT INTO public.books_categories VALUES ('0fc7a533-3eef-460f-af6d-c36f546bbb0c', '9e88c010-6034-4103-b651-a833bb6b1e18');
+INSERT INTO public.books_categories VALUES ('8a6b2e2a-058a-4c9b-b843-efcbbeb751a0', '7d3e4bd5-bbca-47a6-bc63-68517e097868');
+INSERT INTO public.books_categories VALUES ('8a6b2e2a-058a-4c9b-b843-efcbbeb751a0', '9e88c010-6034-4103-b651-a833bb6b1e18');
+INSERT INTO public.books_categories VALUES ('4b2db714-5e56-4501-ae7e-fc6024c106b8', '9e88c010-6034-4103-b651-a833bb6b1e18');
+INSERT INTO public.books_categories VALUES ('4b2db714-5e56-4501-ae7e-fc6024c106b8', '7d3e4bd5-bbca-47a6-bc63-68517e097868');
 
 
+--
+-- TOC entry 3131 (class 0 OID 177384)
+-- Dependencies: 206
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cities VALUES ('27c37ee5-165a-4671-95d6-8efeb627b362', 'Novi Sad', 21000);
 
 
+--
+-- TOC entry 3133 (class 0 OID 177394)
+-- Dependencies: 208
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.customers VALUES (false, NULL, 'andjela@gmail.com', NULL, NULL, '6b217f25-2b45-4d60-8063-bf56fa3b40a1', NULL);
 
 
+--
+-- TOC entry 3132 (class 0 OID 177389)
+-- Dependencies: 207
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.comments VALUES ('277af0a6-7090-4e05-ad31-8d4753ef19bc', 'Knjiga je savrsena!', '2021-09-23 02:33:51.672', 1, '78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', '6b217f25-2b45-4d60-8063-bf56fa3b40a1');
 
 
+--
+-- TOC entry 3135 (class 0 OID 177407)
+-- Dependencies: 210
+-- Data for Name: locations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.locations VALUES ('30d3dc5b-4e94-4a5e-8fa9-fee466ba81a6', 5, 'Bulevar Oslobodjenja', '27c37ee5-165a-4671-95d6-8efeb627b362');
 
 
+--
+-- TOC entry 3136 (class 0 OID 177412)
+-- Dependencies: 211
+-- Data for Name: marks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.marks VALUES ('e9a082bf-b311-4702-88e2-53ecca8d7b0b', 5, '78c5fe36-4fd6-45cc-8834-2e3eae0ab5ae', '6b217f25-2b45-4d60-8063-bf56fa3b40a1');
 
 
+--
+-- TOC entry 3138 (class 0 OID 177422)
+-- Dependencies: 213
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.orders VALUES ('3f569035-d714-4cf5-a77f-57ee236ef7cd', '2021-09-23 02:28:38.588', 2, 79, '6b217f25-2b45-4d60-8063-bf56fa3b40a1', '30d3dc5b-4e94-4a5e-8fa9-fee466ba81a6');
 
 
+--
+-- TOC entry 3137 (class 0 OID 177417)
+-- Dependencies: 212
+-- Data for Name: order_lines; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.order_lines VALUES ('6cc13a1e-7638-40d6-9523-1e8d84a97b59', 29, 1, '8a6b2e2a-058a-4c9b-b843-efcbbeb751a0', '3f569035-d714-4cf5-a77f-57ee236ef7cd');
+INSERT INTO public.order_lines VALUES ('34e411db-5f61-490d-a66f-3ec0a2813ee0', 50, 2, '0fc7a533-3eef-460f-af6d-c36f546bbb0c', '3f569035-d714-4cf5-a77f-57ee236ef7cd');
 
 
-insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('e194ba33-c08c-4839-ae38-05b1904407d2', 'Djordjije', 'Kundacina', 'djordjije', '$2a$10$SGYrV025vt8LCppdh/VzVeZIXeFbDr5cBFyuMxCOD.I15p8CzbRie', 0, 'b8a1f139-ffa5-4694-bc97-fc2ddba92ece.jpeg');
-insert into administrators(user_id) values ('e194ba33-c08c-4839-ae38-05b1904407d2');
-insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'Marko', 'Markovic', 'marko', '$2a$10$o1508kIPKW6yvEG.g/ezLeTe7Ah15ELRVTFAmExUiV15dMIrtSIsy', 1, null);
-insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth, administrator_id) values ('9592a9df-811b-44f2-8b26-47e8478eb256', false, 'marko@gmail.com', 0, '++387-65-555-55-55', '1990-09-10', null);
-insert into users(user_id, first_name, last_name, username, password, type_of_user, image) values ('ceedb308-8c95-4561-b046-516718339d68', 'Andjela', 'Andjelkovic', 'andjela', '$2a$12$/yfrPRXeh4pjIv9vBgL8rO4LBAljGG4fCBosz..EEdSfvD8.Rc6GS', 1, null);
-insert into customers(user_id, blocked, email, gender, phone_number, date_of_birth, administrator_id) values ('ceedb308-8c95-4561-b046-516718339d68', false, 'andjela@gmail.com', 0, null, null, null);
+--
+-- TOC entry 3139 (class 0 OID 177427)
+-- Dependencies: 214
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.roles VALUES ('cb190efc-3c4b-45fc-8307-82039415b61d', 'ROLE_CUSTOMER');
+INSERT INTO public.roles VALUES ('1358136f-d0aa-4361-90c0-b7e38a664bdc', 'ROLE_ADMINISTRATOR');
 
 
-insert into users_roles(user_id, role_id) values ('e194ba33-c08c-4839-ae38-05b1904407d2', '1358136f-d0aa-4361-90c0-b7e38a664bdc');
-insert into users_roles(user_id, role_id) values ('9592a9df-811b-44f2-8b26-47e8478eb256', 'cb190efc-3c4b-45fc-8307-82039415b61d');
-insert into users_roles(user_id, role_id) values ('ceedb308-8c95-4561-b046-516718339d68', 'cb190efc-3c4b-45fc-8307-82039415b61d');
+--
+-- TOC entry 3141 (class 0 OID 177440)
+-- Dependencies: 216
+-- Data for Name: users_roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
 
-insert into cities(city_id, name, zip_code) values ('70daca69-1363-499b-92b6-60946457c9b2', 'Novi Sad', 21000);
-insert into cities(city_id, name, zip_code) values ('1481901e-183c-450e-9fd2-b1a9f9031cba', 'Beograd', 11000);
-insert into cities(city_id, name, zip_code) values ('d7c38da3-b4f7-4f1f-a4b3-e26f2c52a6cb', 'Subotica', 24000);
+INSERT INTO public.users_roles VALUES ('e194ba33-c08c-4839-ae38-05b1904407d2', '1358136f-d0aa-4361-90c0-b7e38a664bdc');
+INSERT INTO public.users_roles VALUES ('6b217f25-2b45-4d60-8063-bf56fa3b40a1', 'cb190efc-3c4b-45fc-8307-82039415b61d');
 
 
+-- Completed on 2021-09-23 02:45:20 CEST
+
+--
+-- PostgreSQL database dump complete
+--

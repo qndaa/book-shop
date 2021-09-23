@@ -11,7 +11,7 @@ import { loggedIn, logout, setToken } from "../apis/api";
 const isLogged = loggedIn();
 
 const INITIAL_STATE = {
-    isLoggedIn: isLogged,
+    isLoggedIn: loggedIn(),
     token: (isLogged) ? localStorage.getItem("token") : null,
     profile : null
 };

@@ -33,7 +33,7 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "biography", length = 2000)
+    @Column(name = "biography", length = 4000)
     private String biography;
 
     @Column(name = "year_of_birth")

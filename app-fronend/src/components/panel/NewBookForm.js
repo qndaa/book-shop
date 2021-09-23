@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import api, {URL_BACKEND} from "../../apis/api";
-import {createAuthor, createBook, fetchAllAuthors} from "../../actions";
+import {createAuthor, createBook, fetchAllAuthors, fetchCategories} from "../../actions";
 import {toast} from "react-toastify";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
@@ -66,7 +66,7 @@ const NewBookForm = () => {
             }
         )).then((response) => {
             toast.success("Book added!");
-            console.log(response.bookId);
+            dispatch(fetchCategories());
             history.push(`/books/${response.bookId}`);
         }).catch(() => {
             toast.error("Error");

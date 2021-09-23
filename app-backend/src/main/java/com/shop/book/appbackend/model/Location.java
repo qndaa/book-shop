@@ -32,11 +32,6 @@ public class Location {
     @Column(name = "number", nullable = false)
     private Integer number;
 
-    @Column(name = "longitude")
-    private Double longitude;
-
-    @Column(name = "latitude")
-    private Double latitude;
 
     @Column(name = "street")
     private String street;
