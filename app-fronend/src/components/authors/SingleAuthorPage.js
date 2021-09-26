@@ -71,6 +71,33 @@ const SingleAuthorPage = (props) => {
         }
     }
 
+    const renderDateOfBirth = (date ) => {
+        if (date !== null) {
+            return(
+                <div className={`col-12 d-flex justify-content-center`}>
+                    <label className={`h3`} htmlFor={`dateOfBirth`}>Year of
+                        birth: {date}</label>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+
+    const renderDateOfDeath = (date) => {
+        if (date !== null) {
+            console.log(date);
+            return (
+                <div className={`col-12 d-flex justify-content-center`}>
+                    <label className={` h3`} htmlFor={`dateOfBirth`}>Year of
+                        death: {date}</label>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+
     if (author === null) {
         return <div>Loading...</div>
     } else {
@@ -93,15 +120,9 @@ const SingleAuthorPage = (props) => {
                                             <label className={` h3`} htmlFor={`dateOfBirth`}>Last
                                                 name: {author.lastName}</label>
                                         </div>
-                                        <div className={`col-12 d-flex justify-content-center`}>
-                                            <label className={`h3`} htmlFor={`dateOfBirth`}>Year of
-                                                birth: {author.yearOfBirth}</label>
-                                        </div>
-                                        <div className={`col-12 d-flex justify-content-center`}>
-                                            <label className={` h3`} htmlFor={`dateOfBirth`}>Year of
-                                                death: {author.yearOfDeath}</label>
+                                        {renderDateOfBirth(author.yearOfBirth)}
+                                        {renderDateOfDeath(author.yearOfDeath)}
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -124,9 +145,9 @@ const SingleAuthorPage = (props) => {
 
                 <div className={`row`}>
                     <div className="col-xl-12 col-md-5 mb-4">
-                                <div className="row ">
-                                    {renderBooks(author.books)}
-                                </div>
+                        <div className="row ">
+                            {renderBooks(author.books)}
+                        </div>
                     </div>
 
 

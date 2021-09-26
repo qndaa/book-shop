@@ -61,7 +61,7 @@ const NewCityForm = () => {
 
             </div>
 
-
+            <hr />
         </form>
 
 

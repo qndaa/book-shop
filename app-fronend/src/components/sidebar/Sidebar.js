@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect, useState} from "react";
-import api, {isAdmin, loggedIn} from "../../apis/api";
+import api, {getProfile, isAdmin, isCustomer, loggedIn} from "../../apis/api";
 
 import Logo from "./Logo";
 import {faHome} from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,7 @@ import CategoryLink from "./CategoryLink";
 import CategoryForm from "./CategoryForm";
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
-import {fetchCategories, logout} from "../../actions";
+import {fetchCategories, fetchOrders, fetchOrdersByCustomer, logout} from "../../actions";
 
 
 const Sidebar = () => {
@@ -22,6 +22,7 @@ const Sidebar = () => {
     const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    const orders = useSelector(state => state.orders);
 
     if (!loggedIn()) {
         dispatch(logout());
@@ -29,6 +30,12 @@ const Sidebar = () => {
 
     useEffect(() => {
         dispatch(fetchCategories());
+        if (isAdmin()) {
+            dispatch(fetchOrders());
+        } else if (isCustomer()) {
+            dispatch(fetchOrdersByCustomer(getProfile().sub));
+        }
+
     }, []);
 
     const renderCategoryLinks = () => {
@@ -43,7 +50,7 @@ const Sidebar = () => {
         if (isLoggedIn) {
 
             return (<React.Fragment>
-                <SidebarLink icon={faEnvelope} title={`Orders`} to={`/orders`}/>
+                <SidebarLink icon={faEnvelope} title={`Orders`} to={`/orders`} isAdmin={isAdmin()}/>
                 <hr className="sidebar-divider my-0"/>
             </React.Fragment>);
         }

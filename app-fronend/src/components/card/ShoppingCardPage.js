@@ -28,8 +28,10 @@ const ShoppingCardPage = () => {
     }
 
 
+    let price = 0;
     const renderBooks = () => {
         return Object.values(books).map(book => {
+            price += book.price;
             return (<div className="col-xl-4 col-md-5 mb-4">
                 <div className="card border-left-primary shadow h-100 py-2">
                     <div className="card-body">
@@ -86,6 +88,10 @@ const ShoppingCardPage = () => {
                 </div>
                 <div className={`col-4`}>
                     <NewCityForm />
+
+                    <div className="d-sm-flex align-items-center justify-content-center mt-4">
+                        <h1 className="h2 mb-0 text-success">Total order price: {price} &euro;</h1>
+                    </div>
                     <OrderForm/>
 
                 </div>

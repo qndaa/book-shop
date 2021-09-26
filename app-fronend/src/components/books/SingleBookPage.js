@@ -115,12 +115,12 @@ const SingleBookPage = (props) => {
         }
 
         if (comments.length === 0) {
-            return <label className={`h4 ml-1 row`}>There is no comments!</label>
+            return <label className={`h4 ml-1 row mt-4`}>There is no comments!</label>
         } else {
 
             return (
                 <React.Fragment>
-                    <label className={`h4 ml-1 row`}>Comments:</label>
+                    <label className={`h4 ml-1 row mt-4`}>Comments:</label>
                     {renderComment(comments)}
                 </React.Fragment>
             );
@@ -181,7 +181,7 @@ const SingleBookPage = (props) => {
 
         return comments.map((item) => {
                 return (
-                    <div className="mt-4 border gray rounded-3 p-3">
+                    <div className="mt-2 border gray rounded-3 p-3">
                         <div className={`row`}>
                             <div className={`col-1`}>
                                 {renderImageUser(item.customer.image)}

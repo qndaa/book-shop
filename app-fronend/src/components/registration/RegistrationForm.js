@@ -12,7 +12,7 @@ const RegistrationForm = () => {
     const submit = (data) => {
         api.post('/customer', data).then((response) => {
             if (response.status) {
-                toast('Registration success!');
+                toast.success('Registration success!');
                 history.push('/login');
             }
         }).catch(err => {

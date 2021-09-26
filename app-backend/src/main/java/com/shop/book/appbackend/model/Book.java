@@ -1,10 +1,7 @@
 package com.shop.book.appbackend.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "books")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book {
 
     @Id

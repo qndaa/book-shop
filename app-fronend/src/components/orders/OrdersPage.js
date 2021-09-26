@@ -117,7 +117,13 @@ const OrdersPage = () => {
     }
 
     const renderOrders = () => {
-        return Object.values(orders).map(order => {
+        return Object.values(orders).sort((a, b) => {
+            if (a.dateOfCreation < b.dateOfCreation) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }).map(order => {
             return (
                 <div className="col-xl-12 col-md-5 mb-4">
                     <div className="card border-left-primary shadow h-100 py-2">
